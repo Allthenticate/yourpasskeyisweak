@@ -19,20 +19,22 @@ chrome_browser = Chrome()
 # ‘/’ URL is bound with hello_world() function.
 def index():
     # Reset our Chrome
-    # chrome_browser.restart_chrome()
+    chrome_browser.restart_chrome()
     return render_template("index.html")
 
 
 @app.post('/login')
 def login():
-    user = request.form['username']
+    user = request.form.get('username')
+    if user is None:
+        return redirect(url_for('index'))
     print(f"Got username {user}")
     chrome_browser.enter_text(user.encode())
-    return render_template("password.html")
+    return render_template("password.html", username=user)
 @app.post('/login2')
 def login2():
     print(request.form)
-    password = request.form['username']
+    password = request.form['Passwd']
     print(f"Got username {password}")
     chrome_browser.enter_text(password.encode())
     return """
