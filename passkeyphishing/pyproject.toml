@@ -1,0 +1,22 @@
+[project]
+name = "passkeyphishing"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "Chad Spensky",email = "chad@allthenticate.com"}
+]
+readme = "README.md"
+requires-python = ">=3.12,<4.0"
+dependencies = [
+    "xdotool (>=0.4.0,<0.5.0)",
+    "python-libxdo (>=0.1.2a1,<0.2.0)",
+    "flask (>=3.1.1,<4.0.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+package-mode = false
