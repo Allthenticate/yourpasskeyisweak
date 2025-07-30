@@ -1,6 +1,5 @@
 # Importing flask module in the project is mandatory
 # An object of Flask class is our WSGI application.
-import time
 
 from flask import Flask, request, redirect, url_for, render_template
 
