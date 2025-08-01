@@ -1,23 +1,3215 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Pwned</title>
-</head>
-<body>
-Your "phishing-resistant" passkeys have been phished.
-<BR>
-<BR>
-Username: {{ username }}
-<BR>
-Password: {{ password }}
-<BR>
-SMS OTP: {{ phone }}
-<BR>
-Password Manger PIN: {{ password_manager_pin }}
-<BR>
-Passkeys:
-<BR>
-{{ passkeys }}
-</body>
+<html data-preferred-theme="light">
+  <head>
+    <title>Your Passkey is Weak</title>
+    <style
+      data-framer-css-ssr-minified=""
+      data-framer-components="framer-lib-cursors-host framer-nX5tj PropertyOverrides"
+    >
+      html,
+      body,
+      #main {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      :root {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+      * {
+        box-sizing: border-box;
+        -webkit-font-smoothing: inherit;
+      }
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      p,
+      figure {
+        margin: 0;
+      }
+      body,
+      input,
+      textarea,
+      select,
+      button {
+        font-size: 12px;
+        font-family: sans-serif;
+      }
+      #__framer-badge-container {
+        --infinity: infinity;
+        position: fixed;
+        bottom: 0;
+        padding: 20px;
+        width: 100%;
+        display: flex;
+        justify-content: right;
+        pointer-events: none;
+        z-index: calc(var(--infinity, 2147483647));
+      }
+      @font-face {
+        font-family: Geist;
+        font-style: normal;
+        font-weight: 700;
+        font-display: swap;
+        src: url(https://fonts.gstatic.com/s/geist/v3/gyBhhwUxId8gMGYQMKR3pzfaWI_Re-QInpna-1Q.woff2)
+          format("woff2");
+        unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+      }
+      @font-face {
+        font-family: Geist;
+        font-style: normal;
+        font-weight: 700;
+        font-display: swap;
+        src: url(https://fonts.gstatic.com/s/geist/v3/gyBhhwUxId8gMGYQMKR3pzfaWI_Re-QIlJna-1Q.woff2)
+          format("woff2");
+        unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7,
+          U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F,
+          U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F,
+          U+A720-A7FF;
+      }
+      @font-face {
+        font-family: Geist;
+        font-style: normal;
+        font-weight: 700;
+        font-display: swap;
+        src: url(https://fonts.gstatic.com/s/geist/v3/gyBhhwUxId8gMGYQMKR3pzfaWI_Re-QImpna.woff2)
+          format("woff2");
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6,
+          U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122,
+          U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+      }
+      @font-face {
+        font-family: Geist Mono;
+        font-style: normal;
+        font-weight: 700;
+        font-display: block;
+        src: url(https://fonts.gstatic.com/s/geistmono/v3/or3yQ6H-1_WfwkMZI_qYPLs1a-t7PU0AbeHaL65Q5ClqOw.woff2)
+          format("woff2");
+        unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+      }
+      @font-face {
+        font-family: Geist Mono;
+        font-style: normal;
+        font-weight: 700;
+        font-display: block;
+        src: url(https://fonts.gstatic.com/s/geistmono/v3/or3yQ6H-1_WfwkMZI_qYPLs1a-t7PU0AbeHaL65a5ClqOw.woff2)
+          format("woff2");
+        unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7,
+          U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F,
+          U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F,
+          U+A720-A7FF;
+      }
+      @font-face {
+        font-family: Geist Mono;
+        font-style: normal;
+        font-weight: 700;
+        font-display: block;
+        src: url(https://fonts.gstatic.com/s/geistmono/v3/or3yQ6H-1_WfwkMZI_qYPLs1a-t7PU0AbeHaL65U5Ck.woff2)
+          format("woff2");
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6,
+          U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122,
+          U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+      }
+      @font-face {
+        font-family: IBM Plex Mono;
+        font-style: normal;
+        font-weight: 700;
+        font-display: block;
+        src: url(https://fonts.gstatic.com/s/ibmplexmono/v19/-F6qfjptAgt5VM-kVkqdyU8n3pQPwl1FgtIU.woff2)
+          format("woff2");
+        unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF,
+          U+A640-A69F, U+FE2E-FE2F;
+      }
+      @font-face {
+        font-family: IBM Plex Mono;
+        font-style: normal;
+        font-weight: 700;
+        font-display: block;
+        src: url(https://fonts.gstatic.com/s/ibmplexmono/v19/-F6qfjptAgt5VM-kVkqdyU8n3pQPwlRFgtIU.woff2)
+          format("woff2");
+        unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+      }
+      @font-face {
+        font-family: IBM Plex Mono;
+        font-style: normal;
+        font-weight: 700;
+        font-display: block;
+        src: url(https://fonts.gstatic.com/s/ibmplexmono/v19/-F6qfjptAgt5VM-kVkqdyU8n3pQPwl9FgtIU.woff2)
+          format("woff2");
+        unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169,
+          U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309,
+          U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+      }
+      @font-face {
+        font-family: IBM Plex Mono;
+        font-style: normal;
+        font-weight: 700;
+        font-display: block;
+        src: url(https://fonts.gstatic.com/s/ibmplexmono/v19/-F6qfjptAgt5VM-kVkqdyU8n3pQPwl5FgtIU.woff2)
+          format("woff2");
+        unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7,
+          U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F,
+          U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F,
+          U+A720-A7FF;
+      }
+      @font-face {
+        font-family: IBM Plex Mono;
+        font-style: normal;
+        font-weight: 700;
+        font-display: block;
+        src: url(https://fonts.gstatic.com/s/ibmplexmono/v19/-F6qfjptAgt5VM-kVkqdyU8n3pQPwlBFgg.woff2)
+          format("woff2");
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6,
+          U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122,
+          U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+      }
+      @font-face {
+        font-family: Geist Placeholder;
+        src: local("Arial");
+        ascent-override: 94.47%;
+        descent-override: 27.73%;
+        line-gap-override: 0%;
+        size-adjust: 106.39%;
+      }
+      body {
+        --framer-will-change-override: none;
+      }
+      @supports (background: -webkit-named-image(i)) and
+        (not (grid-template-rows: subgrid)) {
+        body {
+          --framer-will-change-override: transform;
+        }
+      }
+      [data-framer-component-type] {
+        position: absolute;
+      }
+      [data-framer-component-type="Text"] {
+        cursor: inherit;
+      }
+      [data-framer-component-text-autosized] * {
+        white-space: pre;
+      }
+      [data-framer-component-type="Text"] > * {
+        text-align: var(--framer-text-alignment, start);
+      }
+      [data-framer-component-type="Text"] span span,
+      [data-framer-component-type="Text"] p span,
+      [data-framer-component-type="Text"] h1 span,
+      [data-framer-component-type="Text"] h2 span,
+      [data-framer-component-type="Text"] h3 span,
+      [data-framer-component-type="Text"] h4 span,
+      [data-framer-component-type="Text"] h5 span,
+      [data-framer-component-type="Text"] h6 span {
+        display: block;
+      }
+      [data-framer-component-type="Text"] span span span,
+      [data-framer-component-type="Text"] p span span,
+      [data-framer-component-type="Text"] h1 span span,
+      [data-framer-component-type="Text"] h2 span span,
+      [data-framer-component-type="Text"] h3 span span,
+      [data-framer-component-type="Text"] h4 span span,
+      [data-framer-component-type="Text"] h5 span span,
+      [data-framer-component-type="Text"] h6 span span {
+        display: unset;
+      }
+      [data-framer-component-type="Text"] div div span,
+      [data-framer-component-type="Text"] a div span,
+      [data-framer-component-type="Text"] span span span,
+      [data-framer-component-type="Text"] p span span,
+      [data-framer-component-type="Text"] h1 span span,
+      [data-framer-component-type="Text"] h2 span span,
+      [data-framer-component-type="Text"] h3 span span,
+      [data-framer-component-type="Text"] h4 span span,
+      [data-framer-component-type="Text"] h5 span span,
+      [data-framer-component-type="Text"] h6 span span,
+      [data-framer-component-type="Text"] a {
+        font-family: var(--font-family);
+        font-style: var(--font-style);
+        font-weight: min(
+          calc(var(--framer-font-weight-increase, 0) + var(--font-weight, 400)),
+          900
+        );
+        color: var(--text-color);
+        letter-spacing: var(--letter-spacing);
+        font-size: var(--font-size);
+        text-transform: var(--text-transform);
+        --text-decoration: var(--framer-text-decoration-style, solid)
+          var(--framer-text-decoration, none)
+          var(--framer-text-decoration-color, currentcolor)
+          var(--framer-text-decoration-thickness, auto);
+        --text-decoration-skip-ink: var(--framer-text-decoration-skip-ink);
+        --text-underline-offset: var(--framer-text-decoration-offset);
+        line-height: var(--line-height);
+      }
+      [data-framer-component-type="Text"] div div span,
+      [data-framer-component-type="Text"] a div span,
+      [data-framer-component-type="Text"] span span span,
+      [data-framer-component-type="Text"] p span span,
+      [data-framer-component-type="Text"] h1 span span,
+      [data-framer-component-type="Text"] h2 span span,
+      [data-framer-component-type="Text"] h3 span span,
+      [data-framer-component-type="Text"] h4 span span,
+      [data-framer-component-type="Text"] h5 span span,
+      [data-framer-component-type="Text"] h6 span span,
+      [data-framer-component-type="Text"] a {
+        --font-family: var(--framer-font-family);
+        --font-style: var(--framer-font-style);
+        --font-weight: var(--framer-font-weight);
+        --text-color: var(--framer-text-color);
+        --letter-spacing: var(--framer-letter-spacing);
+        --font-size: var(--framer-font-size);
+        --text-transform: var(--framer-text-transform);
+        --text-decoration: var(--framer-text-decoration-style, solid)
+          var(--framer-text-decoration, none)
+          var(--framer-text-decoration-color, currentcolor)
+          var(--framer-text-decoration-thickness, auto);
+        --text-decoration-skip-ink: var(--framer-text-decoration-skip-ink);
+        --text-underline-offset: var(--framer-text-decoration-offset);
+        --line-height: var(--framer-line-height);
+      }
+      [data-framer-component-type="Text"] a,
+      [data-framer-component-type="Text"] a div span,
+      [data-framer-component-type="Text"] a span span span,
+      [data-framer-component-type="Text"] a p span span,
+      [data-framer-component-type="Text"] a h1 span span,
+      [data-framer-component-type="Text"] a h2 span span,
+      [data-framer-component-type="Text"] a h3 span span,
+      [data-framer-component-type="Text"] a h4 span span,
+      [data-framer-component-type="Text"] a h5 span span,
+      [data-framer-component-type="Text"] a h6 span span {
+        --font-family: var(
+          --framer-link-font-family,
+          var(--framer-font-family)
+        );
+        --font-style: var(--framer-link-font-style, var(--framer-font-style));
+        --font-weight: var(
+          --framer-link-font-weight,
+          var(--framer-font-weight)
+        );
+        --text-color: var(--framer-link-text-color, var(--framer-text-color));
+        --font-size: var(--framer-link-font-size, var(--framer-font-size));
+        --text-transform: var(
+          --framer-link-text-transform,
+          var(--framer-text-transform)
+        );
+        --text-decoration: var(
+            --framer-link-text-decoration-style,
+            var(--framer-text-decoration-style, solid)
+          )
+          var(
+            --framer-link-text-decoration,
+            var(--framer-text-decoration, none)
+          )
+          var(
+            --framer-link-text-decoration-color,
+            var(--framer-text-decoration-color, currentcolor)
+          )
+          var(
+            --framer-link-text-decoration-thickness,
+            var(--framer-text-decoration-thickness, auto)
+          );
+        --text-decoration-skip-ink: var(
+          --framer-link-text-decoration-skip-ink,
+          var(--framer-text-decoration-skip-ink)
+        );
+        --text-underline-offset: var(
+          --framer-link-text-decoration-offset,
+          var(--framer-text-decoration-offset)
+        );
+      }
+      [data-framer-component-type="Text"] a:hover,
+      [data-framer-component-type="Text"] a div span:hover,
+      [data-framer-component-type="Text"] a span span span:hover,
+      [data-framer-component-type="Text"] a p span span:hover,
+      [data-framer-component-type="Text"] a h1 span span:hover,
+      [data-framer-component-type="Text"] a h2 span span:hover,
+      [data-framer-component-type="Text"] a h3 span span:hover,
+      [data-framer-component-type="Text"] a h4 span span:hover,
+      [data-framer-component-type="Text"] a h5 span span:hover,
+      [data-framer-component-type="Text"] a h6 span span:hover {
+        --font-family: var(
+          --framer-link-hover-font-family,
+          var(--framer-link-font-family, var(--framer-font-family))
+        );
+        --font-style: var(
+          --framer-link-hover-font-style,
+          var(--framer-link-font-style, var(--framer-font-style))
+        );
+        --font-weight: var(
+          --framer-link-hover-font-weight,
+          var(--framer-link-font-weight, var(--framer-font-weight))
+        );
+        --text-color: var(
+          --framer-link-hover-text-color,
+          var(--framer-link-text-color, var(--framer-text-color))
+        );
+        --font-size: var(
+          --framer-link-hover-font-size,
+          var(--framer-link-font-size, var(--framer-font-size))
+        );
+        --text-transform: var(
+          --framer-link-hover-text-transform,
+          var(--framer-link-text-transform, var(--framer-text-transform))
+        );
+        --text-decoration: var(
+            --framer-link-hover-text-decoration-style,
+            var(
+              --framer-link-text-decoration-style,
+              var(--framer-text-decoration-style, solid)
+            )
+          )
+          var(
+            --framer-link-hover-text-decoration,
+            var(
+              --framer-link-text-decoration,
+              var(--framer-text-decoration, none)
+            )
+          )
+          var(
+            --framer-link-hover-text-decoration-color,
+            var(
+              --framer-link-text-decoration-color,
+              var(--framer-text-decoration-color, currentcolor)
+            )
+          )
+          var(
+            --framer-link-hover-text-decoration-thickness,
+            var(
+              --framer-link-text-decoration-thickness,
+              var(--framer-text-decoration-thickness, auto)
+            )
+          );
+        --text-decoration-skip-ink: var(
+          --framer-link-hover-text-decoration-skip-ink,
+          var(
+            --framer-link-text-decoration-skip-ink,
+            var(--framer-text-decoration-skip-ink)
+          )
+        );
+        --text-underline-offset: var(
+          --framer-link-hover-text-decoration-offset,
+          var(
+            --framer-link-text-decoration-offset,
+            var(--framer-text-decoration-offset)
+          )
+        );
+      }
+      [data-framer-component-type="Text"].isCurrent a,
+      [data-framer-component-type="Text"].isCurrent a div span,
+      [data-framer-component-type="Text"].isCurrent a span span span,
+      [data-framer-component-type="Text"].isCurrent a p span span,
+      [data-framer-component-type="Text"].isCurrent a h1 span span,
+      [data-framer-component-type="Text"].isCurrent a h2 span span,
+      [data-framer-component-type="Text"].isCurrent a h3 span span,
+      [data-framer-component-type="Text"].isCurrent a h4 span span,
+      [data-framer-component-type="Text"].isCurrent a h5 span span,
+      [data-framer-component-type="Text"].isCurrent a h6 span span {
+        --font-family: var(
+          --framer-link-current-font-family,
+          var(--framer-link-font-family, var(--framer-font-family))
+        );
+        --font-style: var(
+          --framer-link-current-font-style,
+          var(--framer-link-font-style, var(--framer-font-style))
+        );
+        --font-weight: var(
+          --framer-link-current-font-weight,
+          var(--framer-link-font-weight, var(--framer-font-weight))
+        );
+        --text-color: var(
+          --framer-link-current-text-color,
+          var(--framer-link-text-color, var(--framer-text-color))
+        );
+        --font-size: var(
+          --framer-link-current-font-size,
+          var(--framer-link-font-size, var(--framer-font-size))
+        );
+        --text-transform: var(
+          --framer-link-current-text-transform,
+          var(--framer-link-text-transform, var(--framer-text-transform))
+        );
+        --text-decoration: var(
+            --framer-link-current-text-decoration-style,
+            var(
+              --framer-link-text-decoration-style,
+              var(--framer-text-decoration-style, solid)
+            )
+          )
+          var(
+            --framer-link-current-text-decoration,
+            var(
+              --framer-link-text-decoration,
+              var(--framer-text-decoration, none)
+            )
+          )
+          var(
+            --framer-link-current-text-decoration-color,
+            var(
+              --framer-link-text-decoration-color,
+              var(--framer-text-decoration-color, currentcolor)
+            )
+          )
+          var(
+            --framer-link-current-text-decoration-thickness,
+            var(
+              --framer-link-text-decoration-thickness,
+              var(--framer-text-decoration-thickness, auto)
+            )
+          );
+        --text-decoration-skip-ink: var(
+          --framer-link-current-text-decoration-skip-ink,
+          var(
+            --framer-link-text-decoration-skip-ink,
+            var(--framer-text-decoration-skip-ink)
+          )
+        );
+        --text-underline-offset: var(
+          --framer-link-current-text-decoration-offset,
+          var(
+            --framer-link-text-decoration-offset,
+            var(--framer-text-decoration-offset)
+          )
+        );
+      }
+      p.framer-text,
+      div.framer-text,
+      figure.framer-text,
+      h1.framer-text,
+      h2.framer-text,
+      h3.framer-text,
+      h4.framer-text,
+      h5.framer-text,
+      h6.framer-text,
+      ol.framer-text,
+      ul.framer-text {
+        margin: 0;
+        padding: 0;
+      }
+      p.framer-text,
+      div.framer-text,
+      h1.framer-text,
+      h2.framer-text,
+      h3.framer-text,
+      h4.framer-text,
+      h5.framer-text,
+      h6.framer-text,
+      li.framer-text,
+      ol.framer-text,
+      ul.framer-text,
+      span.framer-text:not([data-text-fill]) {
+        font-family: var(
+          --framer-blockquote-font-family,
+          var(--framer-font-family, Inter, Inter Placeholder, sans-serif)
+        );
+        font-style: var(
+          --framer-blockquote-font-style,
+          var(--framer-font-style, normal)
+        );
+        font-weight: var(
+          --framer-blockquote-font-weight,
+          var(--framer-font-weight, 400)
+        );
+        color: var(
+          --framer-blockquote-text-color,
+          var(--framer-text-color, #000)
+        );
+        font-size: calc(
+          var(--framer-blockquote-font-size, var(--framer-font-size, 16px)) *
+            var(--framer-font-size-scale, 1)
+        );
+        letter-spacing: var(
+          --framer-blockquote-letter-spacing,
+          var(--framer-letter-spacing, 0)
+        );
+        text-transform: var(
+          --framer-blockquote-text-transform,
+          var(--framer-text-transform, none)
+        );
+        text-decoration-line: var(
+          --framer-blockquote-text-decoration,
+          var(--framer-text-decoration, initial)
+        );
+        text-decoration-style: var(
+          --framer-blockquote-text-decoration-style,
+          var(--framer-text-decoration-style, initial)
+        );
+        text-decoration-color: var(
+          --framer-blockquote-text-decoration-color,
+          var(--framer-text-decoration-color, initial)
+        );
+        text-decoration-thickness: var(
+          --framer-blockquote-text-decoration-thickness,
+          var(--framer-text-decoration-thickness, initial)
+        );
+        text-decoration-skip-ink: var(
+          --framer-blockquote-text-decoration-skip-ink,
+          var(--framer-text-decoration-skip-ink, initial)
+        );
+        text-underline-offset: var(
+          --framer-blockquote-text-decoration-offset,
+          var(--framer-text-decoration-offset, initial)
+        );
+        line-height: var(
+          --framer-blockquote-line-height,
+          var(--framer-line-height, 1.2em)
+        );
+        text-align: var(
+          --framer-blockquote-text-alignment,
+          var(--framer-text-alignment, start)
+        );
+        -webkit-text-stroke-width: var(--framer-text-stroke-width, initial);
+        -webkit-text-stroke-color: var(--framer-text-stroke-color, initial);
+        -moz-font-feature-settings: var(
+          --framer-font-open-type-features,
+          initial
+        );
+        -webkit-font-feature-settings: var(
+          --framer-font-open-type-features,
+          initial
+        );
+        font-feature-settings: var(--framer-font-open-type-features, initial);
+        font-variation-settings: var(--framer-font-variation-axes, normal);
+        text-wrap: var(--framer-text-wrap-override, var(--framer-text-wrap));
+      }
+      @supports not (color: color(display-p3 1 1 1)) {
+        p.framer-text,
+        div.framer-text,
+        h1.framer-text,
+        h2.framer-text,
+        h3.framer-text,
+        h4.framer-text,
+        h5.framer-text,
+        h6.framer-text,
+        li.framer-text,
+        ol.framer-text,
+        ul.framer-text,
+        span.framer-text:not([data-text-fill]) {
+          color: var(
+            --framer-blockquote-text-color-rgb,
+            var(
+              --framer-blockquote-text-color,
+              var(--framer-text-color-rgb, var(--framer-text-color, #000))
+            )
+          );
+          -webkit-text-stroke-color: var(
+            --framer-text-stroke-color-rgb,
+            var(--framer-text-stroke-color, initial)
+          );
+        }
+      }
+      .framer-fit-text .framer-text {
+        white-space: nowrap;
+        white-space-collapse: preserve;
+      }
+      strong.framer-text {
+        font-family: var(
+          --framer-blockquote-font-family-bold,
+          var(--framer-font-family-bold)
+        );
+        font-style: var(
+          --framer-blockquote-font-style-bold,
+          var(--framer-font-style-bold)
+        );
+        font-weight: var(
+          --framer-blockquote-font-weight-bold,
+          var(--framer-font-weight-bold, bolder)
+        );
+        font-variation-settings: var(
+          --framer-blockquote-font-variation-axes-bold,
+          var(--framer-font-variation-axes-bold)
+        );
+      }
+      em.framer-text {
+        font-family: var(
+          --framer-blockquote-font-family-italic,
+          var(--framer-font-family-italic)
+        );
+        font-style: var(
+          --framer-blockquote-font-style-italic,
+          var(--framer-font-style-italic, italic)
+        );
+        font-weight: var(
+          --framer-blockquote-font-weight-italic,
+          var(--framer-font-weight-italic)
+        );
+        font-variation-settings: var(
+          --framer-blockquote-font-variation-axes-italic,
+          var(--framer-font-variation-axes-italic)
+        );
+      }
+      em.framer-text > strong.framer-text {
+        font-family: var(
+          --framer-blockquote-font-family-bold-italic,
+          var(--framer-font-family-bold-italic)
+        );
+        font-style: var(
+          --framer-blockquote-font-style-bold-italic,
+          var(--framer-font-style-bold-italic, italic)
+        );
+        font-weight: var(
+          --framer-blockquote-font-weight-bold-italic,
+          var(--framer-font-weight-bold-italic, bolder)
+        );
+        font-variation-settings: var(
+          --framer-blockquote-font-variation-axes-bold-italic,
+          var(--framer-font-variation-axes-bold-italic)
+        );
+      }
+      p.framer-text:not(:first-child),
+      div.framer-text:not(:first-child),
+      h1.framer-text:not(:first-child),
+      h2.framer-text:not(:first-child),
+      h3.framer-text:not(:first-child),
+      h4.framer-text:not(:first-child),
+      h5.framer-text:not(:first-child),
+      h6.framer-text:not(:first-child),
+      ol.framer-text:not(:first-child),
+      ul.framer-text:not(:first-child),
+      blockquote.framer-text:not(:first-child),
+      table.framer-text:not(:first-child),
+      figure.framer-text:not(:first-child),
+      .framer-image.framer-text:not(:first-child) {
+        margin-top: var(
+          --framer-blockquote-paragraph-spacing,
+          var(--framer-paragraph-spacing, 0)
+        );
+      }
+      li.framer-text > ul.framer-text:nth-child(2),
+      li.framer-text > ol.framer-text:nth-child(2) {
+        margin-top: 0;
+      }
+      .framer-text[data-text-fill] {
+        display: inline-block;
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        padding: max(
+          0em,
+          calc(
+            calc(
+                1.3em -
+                  var(
+                    --framer-blockquote-line-height,
+                    var(--framer-line-height, 1.3em)
+                  )
+              ) / 2
+          )
+        );
+        margin: min(
+          0em,
+          calc(
+            calc(
+                1.3em -
+                  var(
+                    --framer-blockquote-line-height,
+                    var(--framer-line-height, 1.3em)
+                  )
+              ) / -2
+          )
+        );
+      }
+      code.framer-text,
+      code.framer-text span.framer-text:not([data-text-fill]) {
+        font-family: var(
+          --framer-code-font-family,
+          var(--framer-font-family, Inter, Inter Placeholder, sans-serif)
+        );
+        font-style: var(
+          --framer-blockquote-font-style,
+          var(--framer-code-font-style, var(--framer-font-style, normal))
+        );
+        font-weight: var(
+          --framer-blockquote-font-weight,
+          var(--framer-code-font-weight, var(--framer-font-weight, 400))
+        );
+        color: var(
+          --framer-blockquote-text-color,
+          var(--framer-code-text-color, var(--framer-text-color, #000))
+        );
+        font-size: calc(
+          var(--framer-blockquote-font-size, var(--framer-font-size, 16px)) *
+            var(--framer-font-size-scale, 1)
+        );
+        letter-spacing: var(
+          --framer-blockquote-letter-spacing,
+          var(--framer-letter-spacing, 0)
+        );
+        line-height: var(
+          --framer-blockquote-line-height,
+          var(--framer-line-height, 1.2em)
+        );
+      }
+      @supports not (color: color(display-p3 1 1 1)) {
+        code.framer-text,
+        code.framer-text span.framer-text:not([data-text-fill]) {
+          color: var(
+            --framer-blockquote-text-color-rgb,
+            var(
+              --framer-blockquote-text-color,
+              var(
+                --framer-code-text-color-rgb,
+                var(
+                  --framer-code-text-color,
+                  var(--framer-text-color-rgb, var(--framer-text-color, #000))
+                )
+              )
+            )
+          );
+        }
+      }
+      blockquote.framer-text {
+        margin-block-start: initial;
+        margin-block-end: initial;
+        margin-inline-start: initial;
+        margin-inline-end: initial;
+        unicode-bidi: initial;
+      }
+      a.framer-text,
+      a.framer-text span.framer-text:not([data-text-fill]),
+      span.framer-text[data-nested-link],
+      span.framer-text[data-nested-link]
+        span.framer-text:not([data-text-fill]) {
+        font-family: var(
+          --framer-blockquote-font-family,
+          var(
+            --framer-link-font-family,
+            var(--framer-font-family, Inter, Inter Placeholder, sans-serif)
+          )
+        );
+        font-style: var(
+          --framer-blockquote-font-style,
+          var(--framer-link-font-style, var(--framer-font-style, normal))
+        );
+        font-weight: var(
+          --framer-blockquote-font-weight,
+          var(--framer-link-font-weight, var(--framer-font-weight, 400))
+        );
+        color: var(
+          --framer-blockquote-text-color,
+          var(--framer-link-text-color, var(--framer-text-color, #000))
+        );
+        font-size: calc(
+          var(--framer-blockquote-font-size, var(--framer-font-size, 16px)) *
+            var(--framer-font-size-scale, 1)
+        );
+        text-transform: var(
+          --framer-blockquote-text-transform,
+          var(--framer-link-text-transform, var(--framer-text-transform, none))
+        );
+        cursor: var(--framer-custom-cursors, pointer);
+      }
+      a.framer-text,
+      span.framer-text[data-nested-link] {
+        text-decoration-line: var(
+          --framer-blockquote-text-decoration,
+          var(
+            --framer-link-text-decoration,
+            var(--framer-text-decoration, initial)
+          )
+        );
+        text-decoration-style: var(
+          --framer-blockquote-text-decoration-style,
+          var(
+            --framer-link-text-decoration-style,
+            var(--framer-text-decoration-style, initial)
+          )
+        );
+        text-decoration-color: var(
+          --framer-blockquote-text-decoration-color,
+          var(
+            --framer-link-text-decoration-color,
+            var(--framer-text-decoration-color, initial)
+          )
+        );
+        text-decoration-thickness: var(
+          --framer-blockquote-text-decoration-thickness,
+          var(
+            --framer-link-text-decoration-thickness,
+            var(--framer-text-decoration-thickness, initial)
+          )
+        );
+        text-decoration-skip-ink: var(
+          --framer-blockquote-text-decoration-skip-ink,
+          var(
+            --framer-link-text-decoration-skip-ink,
+            var(--framer-text-decoration-skip-ink, initial)
+          )
+        );
+        text-underline-offset: var(
+          --framer-blockquote-text-decoration-offset,
+          var(
+            --framer-link-text-decoration-offset,
+            var(--framer-text-decoration-offset, initial)
+          )
+        );
+      }
+      @supports not (color: color(display-p3 1 1 1)) {
+        a.framer-text,
+        a.framer-text span.framer-text:not([data-text-fill]),
+        span.framer-text[data-nested-link],
+        span.framer-text[data-nested-link]
+          span.framer-text:not([data-text-fill]) {
+          color: var(
+            --framer-blockquote-text-color-rgb,
+            var(
+              --framer-blockquote-text-color,
+              var(
+                --framer-link-text-color-rgb,
+                var(
+                  --framer-link-text-color,
+                  var(--framer-text-color-rgb, var(--framer-text-color, #000))
+                )
+              )
+            )
+          );
+        }
+      }
+      code.framer-text a.framer-text,
+      code.framer-text a.framer-text span.framer-text:not([data-text-fill]),
+      code.framer-text span.framer-text[data-nested-link],
+      code.framer-text
+        span.framer-text[data-nested-link]
+        span.framer-text:not([data-text-fill]) {
+        font-family: var(
+          --framer-code-font-family,
+          var(--framer-font-family, Inter, Inter Placeholder, sans-serif)
+        );
+        font-style: var(
+          --framer-blockquote-font-style,
+          var(--framer-code-font-style, var(--framer-font-style, normal))
+        );
+        font-weight: var(
+          --framer-blockquote-font-weight,
+          var(--framer-code-font-weight, var(--framer-font-weight, 400))
+        );
+        color: var(
+          --framer-blockquote-text-color,
+          var(
+            --framer-link-text-color,
+            var(--framer-code-text-color, var(--framer-text-color, #000))
+          )
+        );
+        font-size: calc(
+          var(--framer-blockquote-font-size, var(--framer-font-size, 16px)) *
+            var(--framer-font-size-scale, 1)
+        );
+      }
+      @supports not (color: color(display-p3 1 1 1)) {
+        code.framer-text a.framer-text,
+        code.framer-text a.framer-text span.framer-text:not([data-text-fill]),
+        code.framer-text span.framer-text[data-nested-link],
+        code.framer-text
+          span.framer-text[data-nested-link]
+          span.framer-text:not([data-text-fill]) {
+          color: var(
+            --framer-blockquote-text-color-rgb,
+            var(
+              --framer-blockquote-text-color,
+              var(
+                --framer-link-text-color-rgb,
+                var(
+                  --framer-link-text-color,
+                  var(
+                    --framer-code-text-color-rgb,
+                    var(
+                      --framer-code-text-color,
+                      var(
+                        --framer-text-color-rgb,
+                        var(--framer-text-color, #000)
+                      )
+                    )
+                  )
+                )
+              )
+            )
+          );
+        }
+      }
+      a.framer-text:hover,
+      a.framer-text:hover span.framer-text:not([data-text-fill]),
+      span.framer-text[data-nested-link]:hover,
+      span.framer-text[data-nested-link]:hover
+        span.framer-text:not([data-text-fill]) {
+        font-family: var(
+          --framer-link-hover-font-family,
+          var(
+            --framer-blockquote-font-family,
+            var(
+              --framer-link-font-family,
+              var(--framer-font-family, Inter, Inter Placeholder, sans-serif)
+            )
+          )
+        );
+        font-style: var(
+          --framer-link-hover-font-style,
+          var(
+            --framer-blockquote-font-style,
+            var(--framer-link-font-style, var(--framer-font-style, normal))
+          )
+        );
+        font-weight: var(
+          --framer-link-hover-font-weight,
+          var(
+            --framer-blockquote-font-weight,
+            var(--framer-link-font-weight, var(--framer-font-weight, 400))
+          )
+        );
+        color: var(
+          --framer-link-hover-text-color,
+          var(
+            --framer-blockquote-text-color,
+            var(--framer-link-text-color, var(--framer-text-color, #000))
+          )
+        );
+        font-size: calc(
+          var(
+              --framer-link-hover-font-size,
+              var(--framer-blockquote-font-size, var(--framer-font-size, 16px))
+            ) * var(--framer-font-size-scale, 1)
+        );
+        text-transform: var(
+          --framer-link-hover-text-transform,
+          var(
+            --framer-blockquote-text-transform,
+            var(
+              --framer-link-text-transform,
+              var(--framer-text-transform, none)
+            )
+          )
+        );
+      }
+      a.framer-text:hover,
+      span.framer-text[data-nested-link]:hover {
+        text-decoration-line: var(
+          --framer-link-hover-text-decoration,
+          var(
+            --framer-blockquote-text-decoration,
+            var(
+              --framer-link-text-decoration,
+              var(--framer-text-decoration, initial)
+            )
+          )
+        );
+        text-decoration-style: var(
+          --framer-link-hover-text-decoration-style,
+          var(
+            --framer-blockquote-text-decoration-style,
+            var(
+              --framer-link-text-decoration-style,
+              var(--framer-text-decoration-style, initial)
+            )
+          )
+        );
+        text-decoration-color: var(
+          --framer-link-hover-text-decoration-color,
+          var(
+            --framer-blockquote-text-decoration-color,
+            var(
+              --framer-link-text-decoration-color,
+              var(--framer-text-decoration-color, initial)
+            )
+          )
+        );
+        text-decoration-thickness: var(
+          --framer-link-hover-text-decoration-thickness,
+          var(
+            --framer-blockquote-text-decoration-thickness,
+            var(
+              --framer-link-text-decoration-thickness,
+              var(--framer-text-decoration-thickness, initial)
+            )
+          )
+        );
+        text-decoration-skip-ink: var(
+          --framer-link-hover-text-decoration-skip-ink,
+          var(
+            --framer-blockquote-text-decoration-skip-ink,
+            var(
+              --framer-link-text-decoration-skip-ink,
+              var(--framer-text-decoration-skip-ink, initial)
+            )
+          )
+        );
+        text-underline-offset: var(
+          --framer-link-hover-text-decoration-offset,
+          var(
+            --framer-blockquote-text-decoration-offset,
+            var(
+              --framer-link-text-decoration-offset,
+              var(--framer-text-decoration-offset, initial)
+            )
+          )
+        );
+      }
+      @supports not (color: color(display-p3 1 1 1)) {
+        a.framer-text:hover,
+        a.framer-text:hover span.framer-text:not([data-text-fill]),
+        span.framer-text[data-nested-link]:hover,
+        span.framer-text[data-nested-link]:hover
+          span.framer-text:not([data-text-fill]) {
+          color: var(
+            --framer-link-hover-text-color-rgb,
+            var(
+              --framer-link-hover-text-color,
+              var(
+                --framer-blockquote-text-color-rgb,
+                var(
+                  --framer-blockquote-text-color,
+                  var(
+                    --framer-link-text-color-rgb,
+                    var(
+                      --framer-link-text-color,
+                      var(
+                        --framer-text-color-rgb,
+                        var(--framer-text-color, #000)
+                      )
+                    )
+                  )
+                )
+              )
+            )
+          );
+        }
+      }
+      code.framer-text a.framer-text:hover,
+      code.framer-text
+        a.framer-text:hover
+        span.framer-text:not([data-text-fill]),
+      code.framer-text span.framer-text[data-nested-link]:hover,
+      code.framer-text
+        span.framer-text[data-nested-link]:hover
+        span.framer-text:not([data-text-fill]) {
+        font-family: var(
+          var(
+            --framer-code-font-family,
+            var(--framer-font-family, Inter, Inter Placeholder, sans-serif)
+          )
+        );
+        font-style: var(
+          --framer-blockquote-font-style,
+          var(--framer-code-font-style, var(--framer-font-style, normal))
+        );
+        font-weight: var(
+          --framer-blockquote-font-weight,
+          var(--framer-code-font-weight, var(--framer-font-weight, 400))
+        );
+        color: var(
+          --framer-link-hover-text-color,
+          var(
+            --framer-blockquote-text-color,
+            var(
+              --framer-link-text-color,
+              var(--framer-code-text-color, var(--framer-text-color, #000))
+            )
+          )
+        );
+        font-size: calc(
+          var(
+              --framer-link-hover-font-size,
+              var(
+                --framer-blockquote-font-size,
+                var(--framer-link-font-size, var(--framer-font-size, 16px))
+              )
+            ) * var(--framer-font-size-scale, 1)
+        );
+      }
+      @supports not (color: color(display-p3 1 1 1)) {
+        code.framer-text a.framer-text:hover,
+        code.framer-text
+          a.framer-text:hover
+          span.framer-text:not([data-text-fill]),
+        code.framer-text span.framer-text[data-nested-link]:hover,
+        code.framer-text
+          span.framer-text[data-nested-link]:hover
+          span.framer-text:not([data-text-fill]) {
+          color: var(
+            --framer-link-hover-text-color-rgb,
+            var(
+              --framer-link-hover-text-color,
+              var(
+                --framer-blockquote-text-color-rgb,
+                var(
+                  --framer-blockquote-text-color,
+                  var(
+                    --framer-link-text-color-rgb,
+                    var(
+                      --framer-link-text-color,
+                      var(
+                        --framer-text-color-rgb,
+                        var(--framer-text-color, #000)
+                      )
+                    )
+                  )
+                )
+              )
+            )
+          );
+        }
+      }
+      a.framer-text[data-framer-page-link-current],
+      a.framer-text[data-framer-page-link-current]
+        span.framer-text:not([data-text-fill]),
+      span.framer-text[data-framer-page-link-current],
+      span.framer-text[data-framer-page-link-current]
+        span.framer-text:not([data-text-fill]) {
+        font-family: var(
+          --framer-link-current-font-family,
+          var(
+            --framer-link-font-family,
+            var(--framer-font-family, Inter, Inter Placeholder, sans-serif)
+          )
+        );
+        font-style: var(
+          --framer-link-current-font-style,
+          var(--framer-link-font-style, var(--framer-font-style, normal))
+        );
+        font-weight: var(
+          --framer-link-current-font-weight,
+          var(--framer-link-font-weight, var(--framer-font-weight, 400))
+        );
+        color: var(
+          --framer-link-current-text-color,
+          var(--framer-link-text-color, var(--framer-text-color, #000))
+        );
+        font-size: calc(
+          var(
+              --framer-link-current-font-size,
+              var(--framer-link-font-size, var(--framer-font-size, 16px))
+            ) * var(--framer-font-size-scale, 1)
+        );
+        text-transform: var(
+          --framer-link-current-text-transform,
+          var(--framer-link-text-transform, var(--framer-text-transform, none))
+        );
+      }
+      a.framer-text[data-framer-page-link-current],
+      span.framer-text[data-framer-page-link-current] {
+        text-decoration-line: var(
+          --framer-link-current-text-decoration,
+          var(
+            --framer-link-text-decoration,
+            var(--framer-text-decoration, initial)
+          )
+        );
+        text-decoration-style: var(
+          --framer-link-current-text-decoration-style,
+          var(
+            --framer-link-text-decoration-style,
+            var(--framer-text-decoration-style, initial)
+          )
+        );
+        text-decoration-color: var(
+          --framer-link-current-text-decoration-color,
+          var(
+            --framer-link-text-decoration-color,
+            var(--framer-text-decoration-color, initial)
+          )
+        );
+        text-decoration-thickness: var(
+          --framer-link-current-text-decoration-thickness,
+          var(
+            --framer-link-text-decoration-thickness,
+            var(--framer-text-decoration-thickness, initial)
+          )
+        );
+        text-decoration-skip-ink: var(
+          --framer-link-current-text-decoration-skip-ink,
+          var(
+            --framer-link-text-decoration-skip-ink,
+            var(--framer-text-decoration-skip-ink, initial)
+          )
+        );
+        text-underline-offset: var(
+          --framer-link-current-text-decoration-offset,
+          var(
+            --framer-link-text-decoration-offset,
+            var(--framer-text-decoration-offset, initial)
+          )
+        );
+      }
+      @supports not (color: color(display-p3 1 1 1)) {
+        a.framer-text[data-framer-page-link-current],
+        a.framer-text[data-framer-page-link-current]
+          span.framer-text:not([data-text-fill]),
+        span.framer-text[data-framer-page-link-current],
+        span.framer-text[data-framer-page-link-current]
+          span.framer-text:not([data-text-fill]) {
+          color: var(
+            --framer-link-current-text-color-rgb,
+            var(
+              --framer-link-current-text-color,
+              var(
+                --framer-link-text-color-rgb,
+                var(
+                  --framer-link-text-color,
+                  var(--framer-text-color-rgb, var(--framer-text-color, #000))
+                )
+              )
+            )
+          );
+        }
+      }
+      code.framer-text a.framer-text[data-framer-page-link-current],
+      code.framer-text
+        a.framer-text[data-framer-page-link-current]
+        span.framer-text:not([data-text-fill]),
+      code.framer-text span.framer-text[data-framer-page-link-current],
+      code.framer-text
+        span.framer-text[data-framer-page-link-current]
+        span.framer-text:not([data-text-fill]) {
+        font-family: var(
+          --framer-code-font-family,
+          var(--framer-font-family, Inter, Inter Placeholder, sans-serif)
+        );
+        font-style: var(
+          --framer-code-font-style,
+          var(--framer-font-style, normal)
+        );
+        font-weight: var(
+          --framer-code-font-weight,
+          var(--framer-font-weight, 400)
+        );
+        color: var(
+          --framer-link-current-text-color,
+          var(
+            --framer-link-text-color,
+            var(--framer-code-text-color, var(--framer-text-color, #000))
+          )
+        );
+        font-size: calc(
+          var(
+              --framer-link-current-font-size,
+              var(--framer-link-font-size, var(--framer-font-size, 16px))
+            ) * var(--framer-font-size-scale, 1)
+        );
+      }
+      @supports not (color: color(display-p3 1 1 1)) {
+        code.framer-text a.framer-text[data-framer-page-link-current],
+        code.framer-text
+          a.framer-text[data-framer-page-link-current]
+          span.framer-text:not([data-text-fill]),
+        code.framer-text span.framer-text[data-framer-page-link-current],
+        code.framer-text
+          span.framer-text[data-framer-page-link-current]
+          span.framer-text:not([data-text-fill]) {
+          color: var(
+            --framer-link-current-text-color-rgb,
+            var(
+              --framer-link-current-text-color,
+              var(
+                --framer-link-text-color-rgb,
+                var(
+                  --framer-link-text-color,
+                  var(
+                    --framer-code-text-color-rgb,
+                    var(
+                      --framer-code-text-color,
+                      var(
+                        --framer-text-color-rgb,
+                        var(--framer-text-color, #000)
+                      )
+                    )
+                  )
+                )
+              )
+            )
+          );
+        }
+      }
+      a.framer-text[data-framer-page-link-current]:hover,
+      a.framer-text[data-framer-page-link-current]:hover
+        span.framer-text:not([data-text-fill]),
+      span.framer-text[data-framer-page-link-current]:hover,
+      span.framer-text[data-framer-page-link-current]:hover
+        span.framer-text:not([data-text-fill]) {
+        font-family: var(
+          --framer-link-hover-font-family,
+          var(
+            --framer-link-current-font-family,
+            var(
+              --framer-link-font-family,
+              var(--framer-font-family, Inter, Inter Placeholder, sans-serif)
+            )
+          )
+        );
+        font-style: var(
+          --framer-link-hover-font-style,
+          var(
+            --framer-link-current-font-style,
+            var(--framer-link-font-style, var(--framer-font-style, normal))
+          )
+        );
+        font-weight: var(
+          --framer-link-hover-font-weight,
+          var(
+            --framer-link-current-font-weight,
+            var(--framer-link-font-weight, var(--framer-font-weight, 400))
+          )
+        );
+        color: var(
+          --framer-link-hover-text-color,
+          var(
+            --framer-link-current-text-color,
+            var(--framer-link-text-color, var(--framer-text-color, #000))
+          )
+        );
+        font-size: calc(
+          var(
+              --framer-link-hover-font-size,
+              var(
+                --framer-link-current-font-size,
+                var(--framer-link-font-size, var(--framer-font-size, 16px))
+              )
+            ) * var(--framer-font-size-scale, 1)
+        );
+        text-transform: var(
+          --framer-link-hover-text-transform,
+          var(
+            --framer-link-current-text-transform,
+            var(
+              --framer-link-text-transform,
+              var(--framer-text-transform, none)
+            )
+          )
+        );
+      }
+      a.framer-text[data-framer-page-link-current]:hover,
+      span.framer-text[data-framer-page-link-current]:hover {
+        text-decoration-line: var(
+          --framer-link-hover-text-decoration,
+          var(
+            --framer-link-current-text-decoration,
+            var(
+              --framer-link-text-decoration,
+              var(--framer-text-decoration, initial)
+            )
+          )
+        );
+        text-decoration-style: var(
+          --framer-link-hover-text-decoration-style,
+          var(
+            --framer-link-current-text-decoration-style,
+            var(
+              --framer-link-text-decoration-style,
+              var(--framer-text-decoration-style, initial)
+            )
+          )
+        );
+        text-decoration-color: var(
+          --framer-link-hover-text-decoration-color,
+          var(
+            --framer-link-current-text-decoration-color,
+            var(
+              --framer-link-text-decoration-color,
+              var(--framer-text-decoration-color, initial)
+            )
+          )
+        );
+        text-decoration-thickness: var(
+          --framer-link-hover-text-decoration-thickness,
+          var(
+            --framer-link-current-text-decoration-thickness,
+            var(
+              --framer-link-text-decoration-thickness,
+              var(--framer-text-decoration-thickness, initial)
+            )
+          )
+        );
+        text-decoration-skip-ink: var(
+          --framer-link-hover-text-decoration-skip-ink,
+          var(
+            --framer-link-current-text-decoration-skip-ink,
+            var(
+              --framer-link-text-decoration-skip-ink,
+              var(--framer-text-decoration-skip-ink, initial)
+            )
+          )
+        );
+        text-underline-offset: var(
+          --framer-link-hover-text-decoration-offset,
+          var(
+            --framer-link-current-text-decoration-offset,
+            var(
+              --framer-link-text-decoration-offset,
+              var(--framer-text-decoration-offset, initial)
+            )
+          )
+        );
+      }
+      @supports not (color: color(display-p3 1 1 1)) {
+        a.framer-text[data-framer-page-link-current]:hover,
+        a.framer-text[data-framer-page-link-current]:hover
+          span.framer-text:not([data-text-fill]),
+        span.framer-text[data-framer-page-link-current]:hover,
+        span.framer-text[data-framer-page-link-current]:hover
+          span.framer-text:not([data-text-fill]) {
+          color: var(
+            --framer-link-hover-text-color-rgb,
+            var(
+              --framer-link-hover-text-color,
+              var(
+                --framer-link-current-text-color-rgb,
+                var(
+                  --framer-link-current-text-color,
+                  var(
+                    --framer-link-text-color-rgb,
+                    var(
+                      --framer-link-text-color,
+                      var(
+                        --framer-code-text-color-rgb,
+                        var(
+                          --framer-code-text-color,
+                          var(
+                            --framer-text-color-rgb,
+                            var(--framer-text-color, #000)
+                          )
+                        )
+                      )
+                    )
+                  )
+                )
+              )
+            )
+          );
+        }
+      }
+      code.framer-text a.framer-text[data-framer-page-link-current]:hover,
+      code.framer-text
+        a.framer-text[data-framer-page-link-current]:hover
+        span.framer-text:not([data-text-fill]),
+      code.framer-text span.framer-text[data-framer-page-link-current]:hover,
+      code.framer-text
+        span.framer-text[data-framer-page-link-current]:hover
+        span.framer-text:not([data-text-fill]) {
+        font-family: var(
+          --framer-code-font-family,
+          var(--framer-font-family, Inter, Inter Placeholder, sans-serif)
+        );
+        font-style: var(
+          --framer-code-font-style,
+          var(--framer-font-style, normal)
+        );
+        font-weight: var(
+          --framer-code-font-weight,
+          var(--framer-font-weight, 400)
+        );
+        color: var(
+          --framer-link-hover-text-color,
+          var(
+            --framer-link-current-text-color,
+            var(
+              --framer-link-text-color,
+              var(--framer-code-text-color, var(--framer-text-color, #000))
+            )
+          )
+        );
+        font-size: calc(
+          var(
+              --framer-link-hover-font-size,
+              var(
+                --framer-link-current-font-size,
+                var(--framer-link-font-size, var(--framer-font-size, 16px))
+              )
+            ) * var(--framer-font-size-scale, 1)
+        );
+      }
+      @supports not (color: color(display-p3 1 1 1)) {
+        code.framer-text a.framer-text[data-framer-page-link-current]:hover,
+        code.framer-text
+          a.framer-text[data-framer-page-link-current]:hover
+          span.framer-text:not([data-text-fill]),
+        code.framer-text span.framer-text[data-framer-page-link-current]:hover,
+        code.framer-text
+          span.framer-text[data-framer-page-link-current]:hover
+          span.framer-text:not([data-text-fill]) {
+          color: var(
+            --framer-link-hover-text-color-rgb,
+            var(
+              --framer-link-hover-text-color,
+              var(
+                --framer-link-current-text-color-rgb,
+                var(
+                  --framer-link-current-text-color,
+                  var(
+                    --framer-link-text-color-rgb,
+                    var(
+                      --framer-link-text-color,
+                      var(
+                        --framer-code-text-color-rgb,
+                        var(
+                          --framer-code-text-color,
+                          var(
+                            --framer-text-color-rgb,
+                            var(--framer-text-color, #000)
+                          )
+                        )
+                      )
+                    )
+                  )
+                )
+              )
+            )
+          );
+        }
+      }
+      .framer-image.framer-text {
+        display: block;
+        max-width: 100%;
+        height: auto;
+      }
+      .text-styles-preset-reset.framer-text {
+        --framer-font-family: Inter, Inter Placeholder, sans-serif;
+        --framer-font-style: normal;
+        --framer-font-weight: 500;
+        --framer-text-color: #000;
+        --framer-font-size: 16px;
+        --framer-letter-spacing: 0;
+        --framer-text-transform: none;
+        --framer-text-decoration: none;
+        --framer-text-decoration-style: none;
+        --framer-text-decoration-color: none;
+        --framer-text-decoration-thickness: none;
+        --framer-text-decoration-skip-ink: none;
+        --framer-text-decoration-offset: none;
+        --framer-line-height: 1.2em;
+        --framer-text-alignment: start;
+        --framer-font-open-type-features: normal;
+      }
+      ol.framer-text {
+        --list-style-type: decimal;
+      }
+      ul.framer-text,
+      ol.framer-text {
+        padding-left: 3ch;
+        position: relative;
+      }
+      li.framer-text {
+        counter-increment: list-item;
+        list-style: none;
+      }
+      ol.framer-text > li.framer-text:before {
+        position: absolute;
+        left: 0;
+        content: counter(list-item, var(--list-style-type)) ".";
+        font-variant-numeric: tabular-nums;
+      }
+      ol.framer-text > li.framer-text:nth-last-child(n + 100),
+      ol.framer-text > li.framer-text:nth-last-child(n + 100) ~ li {
+        padding-left: 1ch;
+      }
+      ol.framer-text > li.framer-text:nth-last-child(n + 1000),
+      ol.framer-text > li.framer-text:nth-last-child(n + 1000) ~ li {
+        padding-left: 2ch;
+      }
+      ol.framer-text > li.framer-text:nth-last-child(n + 10000),
+      ol.framer-text > li.framer-text:nth-last-child(n + 10000) ~ li {
+        padding-left: 3ch;
+      }
+      ol.framer-text > li.framer-text:nth-last-child(n + 100000),
+      ol.framer-text > li.framer-text:nth-last-child(n + 100000) ~ li {
+        padding-left: 4ch;
+      }
+      ol.framer-text > li.framer-text:nth-last-child(n + 1000000),
+      ol.framer-text > li.framer-text:nth-last-child(n + 1000000) ~ li {
+        padding-left: 5ch;
+      }
+      ul.framer-text > li.framer-text:before {
+        position: absolute;
+        left: 0;
+        content: "\2022";
+      }
+      .framer-table-wrapper {
+        overflow-x: auto;
+      }
+      table.framer-text,
+      .framer-table-wrapper table.framer-text {
+        border-collapse: separate;
+        border-spacing: 0;
+        table-layout: auto;
+        word-break: normal;
+        width: 100%;
+      }
+      td.framer-text,
+      th.framer-text {
+        min-width: 16ch;
+        vertical-align: top;
+      }
+      .framer-text-module[style*="aspect-ratio"] > :first-child {
+        width: 100%;
+      }
+      @supports not (aspect-ratio: 1) {
+        .framer-text-module[style*="aspect-ratio"] {
+          position: relative;
+        }
+      }
+      @supports not (aspect-ratio: 1) {
+        .framer-text-module[style*="aspect-ratio"]:before {
+          content: "";
+          display: block;
+          padding-bottom: calc(100% / calc(var(--aspect-ratio)));
+        }
+      }
+      @supports not (aspect-ratio: 1) {
+        .framer-text-module[style*="aspect-ratio"] > :first-child {
+          position: absolute;
+          top: 0;
+          left: 0;
+          height: 100%;
+        }
+      }
+      [data-framer-component-type="DeprecatedRichText"] {
+        cursor: inherit;
+      }
+      [data-framer-component-type="DeprecatedRichText"]
+        .text-styles-preset-reset {
+        --framer-font-family: Inter, Inter Placeholder, sans-serif;
+        --framer-font-style: normal;
+        --framer-font-weight: 500;
+        --framer-text-color: #000;
+        --framer-font-size: 16px;
+        --framer-letter-spacing: 0;
+        --framer-text-transform: none;
+        --framer-text-decoration: none;
+        --framer-line-height: 1.2em;
+        --framer-text-alignment: start;
+        --framer-font-open-type-features: normal;
+        --font-variation-settings: normal;
+      }
+      [data-framer-component-type="DeprecatedRichText"] p,
+      [data-framer-component-type="DeprecatedRichText"] div,
+      [data-framer-component-type="DeprecatedRichText"] h1,
+      [data-framer-component-type="DeprecatedRichText"] h2,
+      [data-framer-component-type="DeprecatedRichText"] h3,
+      [data-framer-component-type="DeprecatedRichText"] h4,
+      [data-framer-component-type="DeprecatedRichText"] h5,
+      [data-framer-component-type="DeprecatedRichText"] h6 {
+        margin: 0;
+        padding: 0;
+      }
+      [data-framer-component-type="DeprecatedRichText"] p,
+      [data-framer-component-type="DeprecatedRichText"] div,
+      [data-framer-component-type="DeprecatedRichText"] h1,
+      [data-framer-component-type="DeprecatedRichText"] h2,
+      [data-framer-component-type="DeprecatedRichText"] h3,
+      [data-framer-component-type="DeprecatedRichText"] h4,
+      [data-framer-component-type="DeprecatedRichText"] h5,
+      [data-framer-component-type="DeprecatedRichText"] h6,
+      [data-framer-component-type="DeprecatedRichText"] li,
+      [data-framer-component-type="DeprecatedRichText"] ol,
+      [data-framer-component-type="DeprecatedRichText"] ul,
+      [data-framer-component-type="DeprecatedRichText"]
+        span:not([data-text-fill]) {
+        font-family: var(
+          --framer-font-family,
+          Inter,
+          Inter Placeholder,
+          sans-serif
+        );
+        font-style: var(--framer-font-style, normal);
+        font-weight: var(--framer-font-weight, 400);
+        color: var(--framer-text-color, #000);
+        font-size: var(--framer-font-size, 16px);
+        letter-spacing: var(--framer-letter-spacing, 0);
+        text-transform: var(--framer-text-transform, none);
+        text-decoration: var(--framer-text-decoration, none);
+        line-height: var(--framer-line-height, 1.2em);
+        text-align: var(--framer-text-alignment, start);
+      }
+      [data-framer-component-type="DeprecatedRichText"] p:not(:first-child),
+      [data-framer-component-type="DeprecatedRichText"] div:not(:first-child),
+      [data-framer-component-type="DeprecatedRichText"] h1:not(:first-child),
+      [data-framer-component-type="DeprecatedRichText"] h2:not(:first-child),
+      [data-framer-component-type="DeprecatedRichText"] h3:not(:first-child),
+      [data-framer-component-type="DeprecatedRichText"] h4:not(:first-child),
+      [data-framer-component-type="DeprecatedRichText"] h5:not(:first-child),
+      [data-framer-component-type="DeprecatedRichText"] h6:not(:first-child),
+      [data-framer-component-type="DeprecatedRichText"] ol:not(:first-child),
+      [data-framer-component-type="DeprecatedRichText"] ul:not(:first-child),
+      [data-framer-component-type="DeprecatedRichText"]
+        .framer-image:not(:first-child) {
+        margin-top: var(--framer-paragraph-spacing, 0);
+      }
+      [data-framer-component-type="DeprecatedRichText"] span[data-text-fill] {
+        display: inline-block;
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      [data-framer-component-type="DeprecatedRichText"] a,
+      [data-framer-component-type="DeprecatedRichText"]
+        a
+        span:not([data-text-fill]) {
+        font-family: var(
+          --framer-link-font-family,
+          var(--framer-font-family, Inter, Inter Placeholder, sans-serif)
+        );
+        font-style: var(
+          --framer-link-font-style,
+          var(--framer-font-style, normal)
+        );
+        font-weight: var(
+          --framer-link-font-weight,
+          var(--framer-font-weight, 400)
+        );
+        color: var(--framer-link-text-color, var(--framer-text-color, #000));
+        font-size: var(--framer-link-font-size, var(--framer-font-size, 16px));
+        text-transform: var(
+          --framer-link-text-transform,
+          var(--framer-text-transform, none)
+        );
+        text-decoration: var(
+          --framer-link-text-decoration,
+          var(--framer-text-decoration, none)
+        );
+      }
+      [data-framer-component-type="DeprecatedRichText"] a:hover,
+      [data-framer-component-type="DeprecatedRichText"]
+        a:hover
+        span:not([data-text-fill]) {
+        font-family: var(
+          --framer-link-hover-font-family,
+          var(
+            --framer-link-font-family,
+            var(--framer-font-family, Inter, Inter Placeholder, sans-serif)
+          )
+        );
+        font-style: var(
+          --framer-link-hover-font-style,
+          var(--framer-link-font-style, var(--framer-font-style, normal))
+        );
+        font-weight: var(
+          --framer-link-hover-font-weight,
+          var(--framer-link-font-weight, var(--framer-font-weight, 400))
+        );
+        color: var(
+          --framer-link-hover-text-color,
+          var(--framer-link-text-color, var(--framer-text-color, #000))
+        );
+        font-size: var(
+          --framer-link-hover-font-size,
+          var(--framer-link-font-size, var(--framer-font-size, 16px))
+        );
+        text-transform: var(
+          --framer-link-hover-text-transform,
+          var(--framer-link-text-transform, var(--framer-text-transform, none))
+        );
+        text-decoration: var(
+          --framer-link-hover-text-decoration,
+          var(
+            --framer-link-text-decoration,
+            var(--framer-text-decoration, none)
+          )
+        );
+      }
+      [data-framer-component-type="DeprecatedRichText"]
+        a[data-framer-page-link-current],
+      [data-framer-component-type="DeprecatedRichText"]
+        a[data-framer-page-link-current]
+        span:not([data-text-fill]):not([data-nested-link]) {
+        font-family: var(
+          --framer-link-current-font-family,
+          var(
+            --framer-link-font-family,
+            var(--framer-font-family, Inter, Inter Placeholder, sans-serif)
+          )
+        );
+        font-style: var(
+          --framer-link-current-font-style,
+          var(--framer-link-font-style, var(--framer-font-style, normal))
+        );
+        font-weight: var(
+          --framer-link-current-font-weight,
+          var(--framer-link-font-weight, var(--framer-font-weight, 400))
+        );
+        color: var(
+          --framer-link-current-text-color,
+          var(--framer-link-text-color, var(--framer-text-color, #000))
+        );
+        font-size: var(
+          --framer-link-current-font-size,
+          var(--framer-link-font-size, var(--framer-font-size, 16px))
+        );
+        text-transform: var(
+          --framer-link-current-text-transform,
+          var(--framer-link-text-transform, var(--framer-text-transform, none))
+        );
+        text-decoration: var(
+          --framer-link-current-text-decoration,
+          var(
+            --framer-link-text-decoration,
+            var(--framer-text-decoration, none)
+          )
+        );
+      }
+      [data-framer-component-type="DeprecatedRichText"]
+        a[data-framer-page-link-current]:hover,
+      [data-framer-component-type="DeprecatedRichText"]
+        a[data-framer-page-link-current]:hover
+        span:not([data-text-fill]):not([data-nested-link]) {
+        font-family: var(
+          --framer-link-hover-font-family,
+          var(
+            --framer-link-current-font-family,
+            var(
+              --framer-link-font-family,
+              var(--framer-font-family, Inter, Inter Placeholder, sans-serif)
+            )
+          )
+        );
+        font-style: var(
+          --framer-link-hover-font-style,
+          var(
+            --framer-link-current-font-style,
+            var(--framer-link-font-style, var(--framer-font-style, normal))
+          )
+        );
+        font-weight: var(
+          --framer-link-hover-font-weight,
+          var(
+            --framer-link-current-font-weight,
+            var(--framer-link-font-weight, var(--framer-font-weight, 400))
+          )
+        );
+        color: var(
+          --framer-link-hover-text-color,
+          var(
+            --framer-link-current-text-color,
+            var(--framer-link-text-color, var(--framer-text-color, #000))
+          )
+        );
+        font-size: var(
+          --framer-link-hover-font-size,
+          var(
+            --framer-link-current-font-size,
+            var(--framer-link-font-size, var(--framer-font-size, 16px))
+          )
+        );
+        text-transform: var(
+          --framer-link-hover-text-transform,
+          var(
+            --framer-link-current-text-transform,
+            var(
+              --framer-link-text-transform,
+              var(--framer-text-transform, none)
+            )
+          )
+        );
+        text-decoration: var(
+          --framer-link-hover-text-decoration,
+          var(
+            --framer-link-current-text-decoration,
+            var(
+              --framer-link-text-decoration,
+              var(--framer-text-decoration, none)
+            )
+          )
+        );
+      }
+      [data-framer-component-type="DeprecatedRichText"] strong {
+        font-weight: bolder;
+      }
+      [data-framer-component-type="DeprecatedRichText"] em {
+        font-style: italic;
+      }
+      [data-framer-component-type="DeprecatedRichText"] .framer-image {
+        display: block;
+        max-width: 100%;
+        height: auto;
+      }
+      [data-framer-component-type="DeprecatedRichText"] ul,
+      [data-framer-component-type="DeprecatedRichText"] ol {
+        display: table;
+        width: 100%;
+        padding-left: 0;
+        margin: 0;
+      }
+      [data-framer-component-type="DeprecatedRichText"] li {
+        display: table-row;
+        counter-increment: list-item;
+        list-style: none;
+      }
+      [data-framer-component-type="DeprecatedRichText"] ol > li:before {
+        display: table-cell;
+        width: 2.25ch;
+        box-sizing: border-box;
+        padding-right: 0.75ch;
+        content: counter(list-item) ".";
+        white-space: nowrap;
+      }
+      [data-framer-component-type="DeprecatedRichText"] ul > li:before {
+        display: table-cell;
+        width: 2.25ch;
+        box-sizing: border-box;
+        padding-right: 0.75ch;
+        content: "\2022";
+      }
+      :not([data-framer-generated]) > [data-framer-stack-content-wrapper] > *,
+      :not([data-framer-generated])
+        > [data-framer-stack-content-wrapper]
+        > [data-framer-component-type],
+      :not([data-framer-generated])
+        > [data-framer-stack-content-wrapper]
+        > [data-framer-legacy-stack-gap-enabled]
+        > *,
+      :not([data-framer-generated])
+        > [data-framer-stack-content-wrapper]
+        > [data-framer-legacy-stack-gap-enabled]
+        > [data-framer-component-type] {
+        position: relative;
+      }
+      .flexbox-gap-not-supported
+        [data-framer-legacy-stack-gap-enabled="true"]
+        > *,
+      [data-framer-legacy-stack-gap-enabled="true"][data-framer-stack-flexbox-gap="false"] {
+        margin-top: calc(var(--stack-gap-y) / 2);
+        margin-bottom: calc(var(--stack-gap-y) / 2);
+        margin-right: calc(var(--stack-gap-x) / 2);
+        margin-left: calc(var(--stack-gap-x) / 2);
+      }
+      [data-framer-stack-content-wrapper][data-framer-stack-gap-enabled="true"] {
+        row-gap: var(--stack-native-row-gap);
+        column-gap: var(--stack-native-column-gap);
+      }
+      .flexbox-gap-not-supported
+        [data-framer-stack-content-wrapper][data-framer-stack-gap-enabled="true"] {
+        row-gap: unset;
+        column-gap: unset;
+      }
+      .flexbox-gap-not-supported
+        [data-framer-stack-direction-reverse="false"]
+        [data-framer-legacy-stack-gap-enabled="true"]
+        > *:first-child,
+      [data-framer-stack-direction-reverse="false"]
+        [data-framer-legacy-stack-gap-enabled="true"][data-framer-stack-flexbox-gap="false"]
+        > *:first-child,
+      .flexbox-gap-not-supported
+        [data-framer-stack-direction-reverse="true"]
+        [data-framer-legacy-stack-gap-enabled="true"]
+        > *:last-child,
+      [data-framer-stack-direction-reverse="true"]
+        [data-framer-legacy-stack-gap-enabled="true"][data-framer-stack-flexbox-gap="false"]
+        > *:last-child {
+        margin-top: 0;
+        margin-left: 0;
+      }
+      .flexbox-gap-not-supported
+        [data-framer-stack-direction-reverse="false"]
+        [data-framer-legacy-stack-gap-enabled="true"]
+        > *:last-child,
+      [data-framer-stack-direction-reverse="false"]
+        [data-framer-legacy-stack-gap-enabled="true"][data-framer-stack-flexbox-gap="false"]
+        > *:last-child,
+      .flexbox-gap-not-supported
+        [data-framer-stack-direction-reverse="true"]
+        [data-framer-legacy-stack-gap-enabled="true"]
+        > *:first-child,
+      [data-framer-stack-direction-reverse="true"]
+        [data-framer-legacy-stack-gap-enabled="true"][data-framer-stack-flexbox-gap="false"]
+        > *:first-child {
+        margin-right: 0;
+        margin-bottom: 0;
+      }
+      NavigationContainer
+        [data-framer-component-type="NavigationContainer"]
+        > *,
+      [data-framer-component-type="NavigationContainer"]
+        > [data-framer-component-type] {
+        position: relative;
+      }
+      [data-framer-component-type="Scroll"]::-webkit-scrollbar {
+        display: none;
+      }
+      [data-framer-component-type="ScrollContentWrapper"] > * {
+        position: relative;
+      }
+      [data-framer-component-type="NativeScroll"] {
+        -webkit-overflow-scrolling: touch;
+      }
+      [data-framer-component-type="NativeScroll"] > * {
+        position: relative;
+      }
+      [data-framer-component-type="NativeScroll"].direction-both {
+        overflow-x: auto;
+        overflow-y: auto;
+      }
+      [data-framer-component-type="NativeScroll"].direction-vertical {
+        overflow-x: hidden;
+        overflow-y: auto;
+      }
+      [data-framer-component-type="NativeScroll"].direction-horizontal {
+        overflow-x: auto;
+        overflow-y: hidden;
+      }
+      [data-framer-component-type="NativeScroll"].direction-vertical > * {
+        width: 100% !important;
+      }
+      [data-framer-component-type="NativeScroll"].direction-horizontal > * {
+        height: 100% !important;
+      }
+      [data-framer-component-type="NativeScroll"].scrollbar-hidden::-webkit-scrollbar {
+        display: none;
+      }
+      [data-framer-component-type="PageContentWrapper"] > *,
+      [data-framer-component-type="PageContentWrapper"]
+        > [data-framer-component-type] {
+        position: relative;
+      }
+      [data-framer-component-type="DeviceComponent"].no-device > * {
+        width: 100% !important;
+        height: 100% !important;
+      }
+      [data-is-present="false"],
+      [data-is-present="false"] * {
+        pointer-events: none !important;
+      }
+      [data-framer-cursor="pointer"] {
+        cursor: pointer;
+      }
+      [data-framer-cursor="grab"] {
+        cursor: grab;
+      }
+      [data-framer-cursor="grab"]:active {
+        cursor: grabbing;
+      }
+      [data-framer-component-type="Frame"] *,
+      [data-framer-component-type="Stack"] * {
+        pointer-events: auto;
+      }
+      [data-framer-generated] * {
+        pointer-events: unset;
+      }
+      .svgContainer svg {
+        display: block;
+      }
+      [data-reset="button"] {
+        border-width: 0;
+        padding: 0;
+        background: none;
+      }
+      [data-hide-scrollbars="true"]::-webkit-scrollbar {
+        width: 0px;
+        height: 0px;
+      }
+      [data-hide-scrollbars="true"]::-webkit-scrollbar-thumb {
+        background: transparent;
+      }
+      [data-hide-scrollbars="true"] {
+        scrollbar-width: none;
+      }
+      .framer-cursor-none,
+      .framer-cursor-none * {
+        cursor: none !important;
+      }
+      .framer-pointer-events-none,
+      .framer-pointer-events-none * {
+        pointer-events: none !important;
+      }
+      @supports (aspect-ratio: 1) {
+        body {
+          --framer-aspect-ratio-supported: auto;
+        }
+      }
+      .framer-nX5tj.framer-hdfbl3,
+      .framer-nX5tj .framer-hdfbl3 {
+        display: block;
+      }
+      .framer-nX5tj.framer-sdpsuz {
+        align-content: center;
+        align-items: center;
+        background: linear-gradient(
+          180deg,
+          #071d26,
+          #0d191f 32.807808953362546%,
+          #17191a
+        );
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        gap: 10px;
+        height: min-content;
+        justify-content: flex-start;
+        overflow: hidden;
+        padding: 8px;
+        position: relative;
+        width: 1200px;
+      }
+      .framer-nX5tj .framer-9eyvr7 {
+        align-content: center;
+        align-items: center;
+        display: flex;
+        flex: none;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        gap: 8px;
+        height: min-content;
+        justify-content: center;
+        overflow: hidden;
+        padding: 24px;
+        position: relative;
+        width: 100%;
+      }
+      .framer-nX5tj .framer-xz3hhn {
+        aspect-ratio: 1 / 1;
+        flex: none;
+        height: var(--framer-aspect-ratio-supported, 206px);
+        overflow: visible;
+        position: relative;
+        width: 206px;
+      }
+      .framer-nX5tj .framer-5917v9 {
+        align-content: center;
+        align-items: center;
+        display: flex;
+        flex: none;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        gap: 24px;
+        height: min-content;
+        justify-content: center;
+        overflow: hidden;
+        padding: 16px;
+        position: relative;
+        width: 100%;
+      }
+      .framer-nX5tj .framer-1ib3een {
+        --framer-link-text-color: #0099ff;
+        --framer-link-text-decoration: underline;
+        flex: none;
+        height: auto;
+        position: relative;
+        text-shadow: 3px 5px 2px rgba(143, 255, 182, 0.25);
+        white-space: pre-wrap;
+        width: 83%;
+        word-break: break-word;
+        word-wrap: break-word;
+      }
+      .framer-nX5tj .framer-tnhoz9 {
+        align-content: center;
+        align-items: center;
+        display: flex;
+        flex: none;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        gap: 10px;
+        height: min-content;
+        justify-content: center;
+        overflow: hidden;
+        padding: 18px 64px;
+        position: relative;
+        width: 100%;
+      }
+      .framer-nX5tj .framer-1c8ejda {
+        --border-bottom-width: 0.2px;
+        --border-color: rgba(111, 214, 113, 0.34);
+        --border-left-width: 0.2px;
+        --border-right-width: 0.2px;
+        --border-style: solid;
+        --border-top-width: 0.2px;
+        align-content: center;
+        align-items: center;
+        background: linear-gradient(180deg, #142240, #000);
+        border-radius: 8px;
+        box-shadow: 2px 1px 2px #00000040;
+        display: flex;
+        flex: none;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        gap: 2px;
+        height: min-content;
+        justify-content: center;
+        overflow: hidden;
+        padding: 16px;
+        position: relative;
+        width: 100%;
+        will-change: var(--framer-will-change-override, transform);
+      }
+      .framer-nX5tj .framer-1bqk127,
+      .framer-nX5tj .framer-nme888,
+      .framer-nX5tj .framer-1xpcr30,
+      .framer-nX5tj .framer-uq6kd9 {
+        align-content: center;
+        align-items: center;
+        display: flex;
+        flex: none;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        gap: 10px;
+        height: min-content;
+        justify-content: center;
+        overflow: hidden;
+        padding: 0;
+        position: relative;
+        width: 100%;
+      }
+      .framer-nX5tj .framer-sletpy,
+      .framer-nX5tj .framer-1uepaeh,
+      .framer-nX5tj .framer-ig4fn1,
+      .framer-nX5tj .framer-dmy305,
+      .framer-nX5tj .framer-1q1n5ds {
+        align-content: center;
+        align-items: center;
+        background-color: #1f1212;
+        display: flex;
+        flex: none;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        gap: 10px;
+        height: min-content;
+        justify-content: center;
+        overflow: hidden;
+        padding: 0;
+        position: relative;
+        width: 30%;
+      }
+      .framer-nX5tj .framer-1l5f128,
+      .framer-nX5tj .framer-1o3n487,
+      .framer-nX5tj .framer-kxq1sh,
+      .framer-nX5tj .framer-1foexhw,
+      .framer-nX5tj .framer-1s2wqh9 {
+        flex: none;
+        height: auto;
+        position: relative;
+        white-space: pre-wrap;
+        width: 100%;
+        word-break: break-word;
+        word-wrap: break-word;
+      }
+      .framer-nX5tj .framer-1v6z1c1,
+      .framer-nX5tj .framer-7zrd5q,
+      .framer-nX5tj .framer-1bix5hx,
+      .framer-nX5tj .framer-ua864c {
+        align-content: center;
+        align-items: center;
+        background-color: #3b3939;
+        display: flex;
+        flex: none;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        gap: 10px;
+        height: min-content;
+        justify-content: center;
+        overflow: hidden;
+        padding: 0;
+        position: relative;
+        width: 70%;
+      }
+      .framer-nX5tj .framer-1wg3j5u,
+      .framer-nX5tj .framer-1a6h7ot,
+      .framer-nX5tj .framer-eugn14,
+      .framer-nX5tj .framer-twd4p6 {
+        flex: none;
+        height: auto;
+        position: relative;
+        white-space: pre-wrap;
+        width: 64%;
+        word-break: break-word;
+        word-wrap: break-word;
+      }
+      .framer-nX5tj .framer-19yjbd2 {
+        align-content: flex-start;
+        align-items: flex-start;
+        display: flex;
+        flex: none;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        gap: 10px;
+        height: min-content;
+        justify-content: center;
+        overflow: hidden;
+        padding: 0;
+        position: relative;
+        width: 100%;
+      }
+      .framer-nX5tj .framer-1u25fn3 {
+        align-content: center;
+        align-items: center;
+        display: flex;
+        flex: 1 0 0px;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        gap: 0px;
+        height: min-content;
+        justify-content: center;
+        overflow: hidden;
+        padding: 0;
+        position: relative;
+        width: 1px;
+      }
+      .framer-nX5tj .framer-19a6pov,
+      .framer-nX5tj .framer-ed0v72,
+      .framer-nX5tj .framer-mhajw3,
+      .framer-nX5tj .framer-zg5pz5 {
+        align-content: center;
+        align-items: center;
+        background-color: #3b3939;
+        display: flex;
+        flex: none;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        gap: 0px;
+        height: min-content;
+        justify-content: center;
+        overflow: hidden;
+        padding: 0;
+        position: relative;
+        width: 100%;
+        border: solid 2px grey;
+      }
+      .framer-nX5tj .framer-90apkl {
+        --border-bottom-width: 1px;
+        --border-color: #4d4d4d;
+        --border-left-width: 0px;
+        --border-right-width: 1px;
+        --border-style: solid;
+        --border-top-width: 0px;
+        align-content: center;
+        align-items: center;
+        background-color: #000;
+        display: flex;
+        flex: 1 0 0px;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        gap: 10px;
+        height: min-content;
+        justify-content: center;
+        overflow: hidden;
+        padding: 0;
+        position: relative;
+        width: 1px;
+      }
+      .framer-nX5tj .framer-12fk714,
+      .framer-nX5tj .framer-1aoqwj9,
+      .framer-nX5tj .framer-1ae2eww,
+      .framer-nX5tj .framer-1bqivqj,
+      .framer-nX5tj .framer-1h2vviw,
+      .framer-nX5tj .framer-uzv6or,
+      .framer-nX5tj .framer-1r66iqb,
+      .framer-nX5tj .framer-1gzhmhd,
+      .framer-nX5tj .framer-josxuz {
+        flex: 1 0 0px;
+        height: auto;
+        position: relative;
+        white-space: pre-wrap;
+        width: 1px;
+        word-break: break-word;
+        word-wrap: break-word;
+      }
+      .framer-nX5tj .framer-81wwt {
+        --border-bottom-width: 1px;
+        --border-color: #4d4d4d;
+        --border-left-width: 1px;
+        --border-right-width: 0px;
+        --border-style: solid;
+        --border-top-width: 0px;
+        align-content: center;
+        align-items: center;
+        background-color: #000;
+        display: flex;
+        flex: 1 0 0px;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        gap: 10px;
+        height: min-content;
+        justify-content: center;
+        overflow: hidden;
+        padding: 0;
+        position: relative;
+        width: 1px;
+      }
+      .framer-nX5tj .framer-1h5hfrd,
+      .framer-nX5tj .framer-117kea8,
+      .framer-nX5tj .framer-1kqcliv {
+        align-content: center;
+        align-items: center;
+        display: flex;
+        flex: 1 0 0px;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        gap: 10px;
+        height: min-content;
+        justify-content: center;
+        overflow: hidden;
+        padding: 8px;
+        position: relative;
+        width: 1px;
+      }
+      .framer-nX5tj .framer-rva1yh,
+      .framer-nX5tj .framer-q5hx2q,
+      .framer-nX5tj .framer-j17pr6 {
+        --border-bottom-width: 0px;
+        --border-color: #7a7a7a;
+        --border-left-width: 1px;
+        --border-right-width: 0px;
+        --border-style: solid;
+        --border-top-width: 0px;
+        align-content: center;
+        align-items: center;
+        display: flex;
+        flex: 1 0 0px;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        gap: 10px;
+        height: min-content;
+        justify-content: center;
+        overflow: hidden;
+        padding: 8px;
+        position: relative;
+        width: 1px;
+      }
+      .framer-nX5tj .framer-evqght {
+        align-content: center;
+        align-items: center;
+        display: flex;
+        flex: none;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        gap: 10px;
+        height: min-content;
+        justify-content: center;
+        overflow: hidden;
+        padding: 64px;
+        position: relative;
+        width: 100%;
+      }
+      .framer-EDDQ4 .framer-styles-preset-kqlcfp:not(.rich-text-wrapper),
+      .framer-EDDQ4 .framer-styles-preset-kqlcfp.rich-text-wrapper a {
+        --framer-link-current-text-color: #83decd;
+        --framer-link-current-text-decoration: underline;
+        --framer-link-hover-text-color: #c9e6ff;
+        --framer-link-hover-text-decoration: underline;
+        --framer-link-hover-text-decoration-color: #c9e6ff;
+        --framer-link-text-color: #16fa5f;
+        --framer-link-text-decoration: underline;
+      }
+      .framer-nX5tj[data-border="true"]:after,
+      .framer-nX5tj [data-border="true"]:after {
+        content: "";
+        border-width: var(--border-top-width, 0) var(--border-right-width, 0)
+          var(--border-bottom-width, 0) var(--border-left-width, 0);
+        border-color: var(--border-color, none);
+        border-style: var(--border-style, none);
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        box-sizing: border-box;
+        left: 0;
+        top: 0;
+        border-radius: inherit;
+        pointer-events: none;
+      }
+      @media (min-width: 810px) and (max-width: 1199px) {
+        .framer-nX5tj.framer-sdpsuz {
+          width: 810px;
+        }
+        .framer-nX5tj .framer-xz3hhn {
+          height: var(--framer-aspect-ratio-supported, 156px);
+          width: 156px;
+        }
+        .framer-nX5tj .framer-tnhoz9 {
+          padding: 8px;
+        }
+      }
+      @media (max-width: 809px) {
+        .framer-nX5tj.framer-sdpsuz {
+          gap: 24px;
+          padding: 6px 8px;
+          width: 390px;
+        }
+        .framer-nX5tj .framer-9eyvr7 {
+          padding: 24px 8px 8px;
+        }
+        .framer-nX5tj .framer-xz3hhn {
+          height: var(--framer-aspect-ratio-supported, 130px);
+          width: 130px;
+        }
+        .framer-nX5tj .framer-5917v9,
+        .framer-nX5tj .framer-tnhoz9 {
+          padding: 8px;
+        }
+        .framer-nX5tj .framer-1ib3een,
+        .framer-nX5tj .framer-sletpy,
+        .framer-nX5tj .framer-1uepaeh,
+        .framer-nX5tj .framer-ig4fn1,
+        .framer-nX5tj .framer-dmy305,
+        .framer-nX5tj .framer-1q1n5ds {
+          width: 100%;
+        }
+        .framer-nX5tj .framer-1c8ejda {
+          gap: 8px;
+          padding: 0;
+        }
+        .framer-nX5tj .framer-1bqk127,
+        .framer-nX5tj .framer-nme888,
+        .framer-nX5tj .framer-1xpcr30,
+        .framer-nX5tj .framer-uq6kd9 {
+          flex-direction: column;
+        }
+        .framer-nX5tj .framer-1l5f128,
+        .framer-nX5tj .framer-1o3n487,
+        .framer-nX5tj .framer-kxq1sh,
+        .framer-nX5tj .framer-1foexhw {
+          flex: 1 0 0px;
+          width: 1px;
+        }
+        .framer-nX5tj .framer-19yjbd2 {
+          flex-direction: column;
+          padding: 16px 0 0;
+        }
+        .framer-nX5tj .framer-1u25fn3 {
+          flex: none;
+          width: 100%;
+        }
+      }
+      .ssr-variant {
+        display: contents;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="main"
+      data-framer-hydrate-v2='{"routeId":"Gy8pU8mi2","localeId":"default","breakpoints":[{"hash":"sdpsuz","mediaQuery":"(min-width: 1200px)"},{"hash":"aeg6p0","mediaQuery":"(min-width: 810px) and (max-width: 1199px)"},{"hash":"lsy33h","mediaQuery":"(max-width: 809px)"}]}'
+      data-framer-ssr-released-at="2025-07-30T14:00:15.935Z"
+      data-framer-page-optimized-at="2025-08-01T16:16:55.159Z"
+      data-framer-generated-page=""
+      style="margin: auto; width: 1200px"
+    >
+      <style data-framer-html-style="">
+        html body {
+          background: linear-gradient(
+            180deg,
+            rgb(7, 29, 38) 0%,
+            rgb(13, 25, 31) 32.807808953362546%,
+            rgb(23, 25, 26) 100%
+          );
+        }
+      </style>
+      <div
+        data-framer-root=""
+        class="framer-nX5tj framer-EDDQ4 framer-sdpsuz"
+        style="min-height: 100vh; width: auto"
+      >
+        <div class="framer-9eyvr7" data-framer-name="H1">
+          <div class="framer-5917v9">
+            <div class="ssr-variant hidden-lsy33h hidden-aeg6p0">
+              <div
+                class="framer-1ib3een"
+                style="
+                  outline: none;
+                  display: flex;
+                  flex-direction: column;
+                  justify-content: flex-start;
+                  flex-shrink: 0;
+                  transform: none;
+                "
+                data-framer-component-type="RichTextContainer"
+              >
+                <h1
+                  style="
+                    --font-selector: R0Y7SUJNIFBsZXggTW9uby03MDA=;
+                    --framer-font-family: 'IBM Plex Mono', monospace;
+                    --framer-font-size: 64px;
+                    --framer-font-weight: 700;
+                    --framer-letter-spacing: -0.07em;
+                    --framer-line-height: 0.9em;
+                    --framer-text-alignment: center;
+                    --framer-text-color: rgb(238, 255, 235);
+                  "
+                  class="framer-text"
+                >
+                  <span
+                    data-text-fill="true"
+                    style="
+                      background-image: linear-gradient(
+                        0deg,
+                        rgb(130, 255, 161) 0%,
+                        rgb(8, 196, 51) 100%
+                      );
+                    "
+                    class="framer-text"
+                    >Your "phishing-resistant" passkeys have been phished.</span
+                  >
+                </h1>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="framer-tnhoz9"
+          data-framer-name="top info bar, below header/subheader"
+        >
+          <div
+            class="framer-1c8ejda"
+            data-border="true"
+            data-framer-name="text box"
+          >
+            <div class="framer-1bqk127" data-framer-name="list item">
+              <div class="framer-sletpy" data-framer-name="black box">
+                <div class="ssr-variant hidden-lsy33h">
+                  <div
+                    class="framer-1l5f128"
+                    style="
+                      outline: none;
+                      display: flex;
+                      flex-direction: column;
+                      justify-content: flex-start;
+                      flex-shrink: 0;
+                      transform: none;
+                    "
+                    data-framer-component-type="RichTextContainer"
+                  >
+                    <p
+                      style="
+                        --font-selector: R0Y7R2Vpc3QgTW9uby03MDA=;
+                        --framer-font-family: 'Geist Mono', monospace;
+                        --framer-font-size: 24px;
+                        --framer-font-weight: 700;
+                        --framer-letter-spacing: -0.03em;
+                        --framer-line-height: 1.4em;
+                        --framer-text-alignment: right;
+                        --framer-text-color: rgb(222, 222, 222);
+                      "
+                      class="framer-text"
+                    >Username:</p>
+                  </div>
+                </div>
+              </div>
+              <div class="framer-1v6z1c1">
+                <div
+                  class="framer-1wg3j5u"
+                  style="
+                    outline: none;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: flex-start;
+                    flex-shrink: 0;
+                    transform: none;
+                  "
+                  data-framer-component-type="RichTextContainer"
+                >
+                  <p
+                    style="
+                      --font-selector: R0Y7R2Vpc3QtNzAw;
+                      --framer-font-family: 'Geist', 'Geist Placeholder',
+                        sans-serif;
+                      --framer-font-size: 24px;
+                      --framer-font-weight: 700;
+                      --framer-letter-spacing: -0.03em;
+                      --framer-line-height: 1.4em;
+                      --framer-text-alignment: center;
+                      --framer-text-color: rgb(222, 222, 222);
+                    "
+                    class="framer-text"
+                  >{{ username }}</p>
+                </div>
+              </div>
+            </div>
+            <div class="framer-nme888" data-framer-name="list item">
+              <div class="framer-1uepaeh" data-framer-name="black box">
+                <div class="ssr-variant hidden-lsy33h">
+                  <div
+                    class="framer-1o3n487"
+                    style="
+                      outline: none;
+                      display: flex;
+                      flex-direction: column;
+                      justify-content: flex-start;
+                      flex-shrink: 0;
+                      transform: none;
+                    "
+                    data-framer-component-type="RichTextContainer"
+                  >
+                    <p
+                      style="
+                        --font-selector: R0Y7R2Vpc3QgTW9uby03MDA=;
+                        --framer-font-family: 'Geist Mono', monospace;
+                        --framer-font-size: 24px;
+                        --framer-font-weight: 700;
+                        --framer-letter-spacing: -0.03em;
+                        --framer-line-height: 1.4em;
+                        --framer-text-alignment: right;
+                        --framer-text-color: rgb(222, 222, 222);
+                      "
+                      class="framer-text"
+                    >Password:</p>
+                  </div>
+                </div>
+              </div>
+              <div class="framer-7zrd5q">
+                <div
+                  class="framer-1a6h7ot"
+                  style="
+                    outline: none;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: flex-start;
+                    flex-shrink: 0;
+                    transform: none;
+                  "
+                  data-framer-component-type="RichTextContainer"
+                >
+                  <p
+                    style="
+                      --font-selector: R0Y7R2Vpc3QtNzAw;
+                      --framer-font-family: 'Geist', 'Geist Placeholder',
+                        sans-serif;
+                      --framer-font-size: 24px;
+                      --framer-font-weight: 700;
+                      --framer-letter-spacing: -0.03em;
+                      --framer-line-height: 1.4em;
+                      --framer-text-alignment: center;
+                      --framer-text-color: rgb(222, 222, 222);
+                    "
+                    class="framer-text"
+                  >{{ password }}</p>
+                </div>
+              </div>
+            </div>
+            <div class="framer-1xpcr30" data-framer-name="list item">
+              <div class="framer-ig4fn1" data-framer-name="black box">
+                <div class="ssr-variant hidden-lsy33h">
+                  <div
+                    class="framer-kxq1sh"
+                    style="
+                      outline: none;
+                      display: flex;
+                      flex-direction: column;
+                      justify-content: flex-start;
+                      flex-shrink: 0;
+                      transform: none;
+                    "
+                    data-framer-component-type="RichTextContainer"
+                  >
+                    <p
+                      style="
+                        --font-selector: R0Y7R2Vpc3QgTW9uby03MDA=;
+                        --framer-font-family: 'Geist Mono', monospace;
+                        --framer-font-size: 24px;
+                        --framer-font-weight: 700;
+                        --framer-letter-spacing: -0.03em;
+                        --framer-line-height: 1.4em;
+                        --framer-text-alignment: right;
+                        --framer-text-color: rgb(222, 222, 222);
+                      "
+                      class="framer-text"
+                    >SMS OTP:</p>
+                  </div>
+                </div>
+              </div>
+              <div class="framer-1bix5hx">
+                <div
+                  class="framer-eugn14"
+                  style="
+                    outline: none;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: flex-start;
+                    flex-shrink: 0;
+                    transform: none;
+                  "
+                  data-framer-component-type="RichTextContainer"
+                >
+                  <p
+                    style="
+                      --font-selector: R0Y7R2Vpc3QtNzAw;
+                      --framer-font-family: 'Geist', 'Geist Placeholder',
+                        sans-serif;
+                      --framer-font-size: 24px;
+                      --framer-font-weight: 700;
+                      --framer-letter-spacing: -0.03em;
+                      --framer-line-height: 1.4em;
+                      --framer-text-alignment: center;
+                      --framer-text-color: rgb(222, 222, 222);
+                    "
+                    class="framer-text"
+                  >{{ phone }}</p>
+                </div>
+              </div>
+            </div>
+            <div class="framer-uq6kd9" data-framer-name="list item">
+              <div class="framer-dmy305" data-framer-name="black box">
+                <div class="ssr-variant hidden-lsy33h">
+                  <div
+                    class="framer-1foexhw"
+                    style="
+                      outline: none;
+                      display: flex;
+                      flex-direction: column;
+                      justify-content: flex-start;
+                      flex-shrink: 0;
+                      transform: none;
+                    "
+                    data-framer-component-type="RichTextContainer"
+                  >
+                    <p
+                      style="
+                        --font-selector: R0Y7R2Vpc3QgTW9uby03MDA=;
+                        --framer-font-family: 'Geist Mono', monospace;
+                        --framer-font-size: 24px;
+                        --framer-font-weight: 700;
+                        --framer-letter-spacing: -0.03em;
+                        --framer-line-height: 1.4em;
+                        --framer-text-alignment: right;
+                        --framer-text-color: rgb(222, 222, 222);
+                      "
+                      class="framer-text"
+                    >Password Manager PIN:</p>
+                  </div>
+                </div>
+              </div>
+              <div class="framer-ua864c">
+                <div
+                  class="framer-twd4p6"
+                  style="
+                    outline: none;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: flex-start;
+                    flex-shrink: 0;
+                    transform: none;
+                  "
+                  data-framer-component-type="RichTextContainer"
+                >
+                  <p
+                    style="
+                      --font-selector: R0Y7R2Vpc3QtNzAw;
+                      --framer-font-family: 'Geist', 'Geist Placeholder',
+                        sans-serif;
+                      --framer-font-size: 24px;
+                      --framer-font-weight: 700;
+                      --framer-letter-spacing: -0.03em;
+                      --framer-line-height: 1.4em;
+                      --framer-text-alignment: center;
+                      --framer-text-color: rgb(222, 222, 222);
+                    "
+                    class="framer-text"
+                  >{{ password_manager_pin }}</p>
+                </div>
+              </div>
+            </div>
+            <div class="framer-19yjbd2" data-framer-name="list item">
+              <div class="framer-1q1n5ds" data-framer-name="black box">
+                <div class="ssr-variant hidden-lsy33h">
+                  <div
+                          class="framer-1s2wqh9"
+                          style="
+                      outline: none;
+                      display: flex;
+                      flex-direction: column;
+                      justify-content: flex-start;
+                      flex-shrink: 0;
+                      transform: none;
+                    "
+                          data-framer-component-type="RichTextContainer"
+                  >
+                    <p
+                            style="
+                        --font-selector: R0Y7R2Vpc3QgTW9uby03MDA=;
+                        --framer-font-family: 'Geist Mono', monospace;
+                        --framer-font-size: 24px;
+                        --framer-font-weight: 700;
+                        --framer-letter-spacing: -0.03em;
+                        --framer-line-height: 1.4em;
+                        --framer-text-alignment: right;
+                        --framer-text-color: rgb(222, 222, 222);
+                      "
+                            class="framer-text"
+                    >Stored Passwords:</p>
+                  </div>
+                </div>
+              </div>
+              <div class="framer-1u25fn3">
+                {% for pw in passwords %}
+                <div class="framer-ed0v72">
+                  <div class="framer-rva1yh" data-border="true">
+                    <div
+                            class="framer-1bqivqj"
+                            style="
+                        outline: none;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: flex-start;
+                        flex-shrink: 0;
+                        transform: none;
+                      "
+                            data-framer-component-type="RichTextContainer"
+                    >
+                      <p
+                              style="
+                          --font-selector: R0Y7R2Vpc3QtNzAw;
+                          --framer-font-family: 'Geist', 'Geist Placeholder',
+                            sans-serif;
+                          --framer-font-size: 15px;
+                          --framer-font-weight: 700;
+                          --framer-letter-spacing: -0.03em;
+                          --framer-line-height: 1.4em;
+                          --framer-text-alignment: center;
+                          --framer-text-color: rgb(255, 255, 255);
+                        "
+                              class="framer-text"
+                      >{{ pw[0] }}</p>
+                    </div>
+                  </div>
+                  <div class="framer-rva1yh" data-border="true">
+                    <div
+                            class="framer-1bqivqj"
+                            style="
+                        outline: none;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: flex-start;
+                        flex-shrink: 0;
+                        transform: none;
+                      "
+                            data-framer-component-type="RichTextContainer"
+                    >
+                      <p
+                              style="
+                          --font-selector: R0Y7R2Vpc3QtNzAw;
+                          --framer-font-family: 'Geist', 'Geist Placeholder',
+                            sans-serif;
+                          --framer-font-size: 20px;
+                          --framer-font-weight: 700;
+                          --framer-letter-spacing: -0.03em;
+                          --framer-line-height: 1.4em;
+                          --framer-text-alignment: center;
+                          --framer-text-color: rgb(255, 255, 255);
+                        "
+                              class="framer-text"
+                      >{{ pw[2] }}</p>
+                    </div>
+                  </div>
+                  <div class="framer-rva1yh" data-border="true">
+                    <div
+                            class="framer-1bqivqj"
+                            style="
+                        outline: none;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: flex-start;
+                        flex-shrink: 0;
+                        transform: none;
+                      "
+                            data-framer-component-type="RichTextContainer"
+                    >
+                      <p
+                              style="
+                          --font-selector: R0Y7R2Vpc3QtNzAw;
+                          --framer-font-family: 'Geist', 'Geist Placeholder',
+                            sans-serif;
+                          --framer-font-size: 20px;
+                          --framer-font-weight: 1000;
+                          --framer-letter-spacing: -0.03em;
+                          --framer-line-height: 1.4em;
+                          --framer-text-alignment: center;
+                          --framer-text-color: rgb(255, 255, 255);
+                        "
+                              class="framer-text"
+                      >{{ pw[3] }}</p>
+                    </div>
+                  </div>
+                </div>
+                {% endfor %}
+              </div>
+            </div>
+            <div class="framer-19yjbd2" data-framer-name="list item">
+              <div class="framer-1q1n5ds" data-framer-name="black box">
+                <div class="ssr-variant hidden-lsy33h">
+                  <div
+                    class="framer-1s2wqh9"
+                    style="
+                      outline: none;
+                      display: flex;
+                      flex-direction: column;
+                      justify-content: flex-start;
+                      flex-shrink: 0;
+                      transform: none;
+                    "
+                    data-framer-component-type="RichTextContainer"
+                  >
+                    <p
+                      style="
+                        --font-selector: R0Y7R2Vpc3QgTW9uby03MDA=;
+                        --framer-font-family: 'Geist Mono', monospace;
+                        --framer-font-size: 24px;
+                        --framer-font-weight: 700;
+                        --framer-letter-spacing: -0.03em;
+                        --framer-line-height: 1.4em;
+                        --framer-text-alignment: right;
+                        --framer-text-color: rgb(222, 222, 222);
+                      "
+                      class="framer-text"
+                    >Passkeys:</p>
+                  </div>
+                </div>
+              </div>
+              <div class="framer-1u25fn3">
+                <div class="framer-19a6pov">
+                  <div class="framer-90apkl" data-border="true">
+                    <div
+                      class="framer-12fk714"
+                      style="
+                        outline: none;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: flex-start;
+                        flex-shrink: 0;
+                        transform: none;
+                      "
+                      data-framer-component-type="RichTextContainer"
+                    >
+                      <p
+                        style="
+                          --font-selector: R0Y7R2Vpc3QgTW9uby03MDA=;
+                          --framer-font-family: 'Geist Mono', monospace;
+                          --framer-font-size: 24px;
+                          --framer-font-weight: 700;
+                          --framer-letter-spacing: -0.03em;
+                          --framer-line-height: 1.4em;
+                          --framer-text-alignment: center;
+                          --framer-text-color: rgb(255, 247, 247);
+                        "
+                        class="framer-text"
+                      >key</p>
+                    </div>
+                  </div>
+                  <div class="framer-81wwt" data-border="true">
+                    <div
+                      class="framer-1aoqwj9"
+                      style="
+                        outline: none;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: flex-start;
+                        flex-shrink: 0;
+                        transform: none;
+                      "
+                      data-framer-component-type="RichTextContainer"
+                    >
+                      <p
+                        style="
+                          --font-selector: R0Y7R2Vpc3QgTW9uby03MDA=;
+                          --framer-font-family: 'Geist Mono', monospace;
+                          --framer-font-size: 24px;
+                          --framer-font-weight: 700;
+                          --framer-letter-spacing: -0.03em;
+                          --framer-line-height: 1.4em;
+                          --framer-text-alignment: center;
+                          --framer-text-color: rgb(255, 247, 247);
+                        "
+                        class="framer-text"
+                      >value</p>
+                    </div>
+                  </div>
+                </div>
+                {% for passkey in passkeys %}
+                <div class="framer-ed0v72">
+                  <div class="framer-1h5hfrd">
+                    <div
+                      class="framer-1ae2eww"
+                      style="
+                        outline: none;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: flex-start;
+                        flex-shrink: 0;
+                        transform: none;
+                      "
+                      data-framer-component-type="RichTextContainer"
+                    >
+                      <p
+                        style="
+                          --font-selector: R0Y7R2Vpc3QtNzAw;
+                          --framer-font-family: 'Geist', 'Geist Placeholder',
+                            sans-serif;
+                          --framer-font-size: 12px;
+                          --framer-font-weight: 700;
+                          --framer-letter-spacing: -0.03em;
+                          --framer-line-height: 1.4em;
+                          --framer-text-alignment: center;
+                          --framer-text-color: rgb(255, 255, 255);
+                        "
+                        class="framer-text"
+                      >{{ passkey[0] }}</p>
+                    </div>
+                  </div>
+                  <div class="framer-rva1yh" data-border="true">
+                    <div
+                      class="framer-1bqivqj"
+                      style="
+                        outline: none;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: flex-start;
+                        flex-shrink: 0;
+                        transform: none;
+                      "
+                      data-framer-component-type="RichTextContainer"
+                    >
+                      <p
+                        style="
+                          --font-selector: R0Y7R2Vpc3QtNzAw;
+                          --framer-font-family: 'Geist', 'Geist Placeholder',
+                            sans-serif;
+                          --framer-font-size: 12px;
+                          --framer-font-weight: 700;
+                          --framer-letter-spacing: -0.03em;
+                          --framer-line-height: 1.4em;
+                          --framer-text-alignment: center;
+                          --framer-text-color: rgb(255, 255, 255);
+                        "
+                        class="framer-text"
+                      >{{ passkey[1] }}</p>
+                    </div>
+                  </div>
+                </div>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="framer-evqght">
+          <div class="ssr-variant hidden-lsy33h">
+            <div
+              class="framer-josxuz"
+              style="
+                outline: none;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                flex-shrink: 0;
+                transform: none;
+              "
+              data-framer-component-type="RichTextContainer"
+            >
+              <p
+                style="
+                  --font-selector: R0Y7R2Vpc3QtNzAw;
+                  --framer-font-family: 'Geist', 'Geist Placeholder', sans-serif;
+                  --framer-font-size: 32px;
+                  --framer-font-weight: 700;
+                  --framer-text-alignment: center;
+                  --framer-text-color: rgb(255, 255, 255);
+                "
+                class="framer-text"
+              >
+                <!--$--><a
+                  class="framer-text framer-styles-preset-kqlcfp"
+                  data-styles-preset="cNn9I9GAi"
+                  href="https://www.yourpasskeyisweak.com"
+                  target="_blank"
+                  rel="noopener"
+                  >www.yourpasskeyisweak.com</a
+                ><!--/$-->
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>

