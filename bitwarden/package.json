@@ -1,0 +1,17 @@
+{
+  "name": "bitwarden",
+  "version": "1.0.0",
+  "description": "Simple Bitwarden Phishing Page",
+  "keywords": [],
+  "license": "ISC",
+  "author": "@masrt",
+  "type": "commonjs",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
