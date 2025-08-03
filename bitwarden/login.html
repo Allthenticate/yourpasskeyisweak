@@ -96,19 +96,20 @@
                                     </div>
                                 </div>
                             </bit-form-field>
-                            <bit-form-control class="tw-block tw-mb-4">
-                                <label class="tw-transition tw-items-start [&amp;:has(input[type='checkbox'])]:tw-gap-[.25rem] [&amp;:has(input[type='radio'])]:tw-gap-1.5 tw-select-none tw-mb-0 tw-inline-flex tw-rounded has-[:focus-visible]:tw-ring has-[:focus-visible]:tw-ring-primary-600 tw-cursor-pointer">
-                                    <input type="checkbox" formcontrolname="rememberEmail" bitcheckbox="" class="!-tw-mb-1 !-tw-ms-1 !-tw-mt-1 !tw-p-1">
-                                    <span class="tw-inline-flex tw-flex-col tw-text-main">
-                                        <span bittypography="body2" class="!tw-text-sm">
-                                            <bit-label title="Remember email" id="bit-label-1" class="tw-flex-row tw-gap-1 tw-inline-flex tw-items-baseline tw-min-w-0">
-                                                <span>Remember email</span>
-                                            </bit-label>
-                                        </span>
-                                    </span>
+			                <bit-form-control class="tw-block tw-mb-4">
+				                <label class="tw-transition tw-items-start [&amp;:has(input[type='checkbox'])]:tw-gap-[.25rem] [&amp;:has(input[type='radio'])]:tw-gap-1.5 tw-select-none tw-mb-0 tw-inline-flex tw-rounded has-[:focus-visible]:tw-ring has-[:focus-visible]:tw-ring-primary-600 tw-cursor-pointer">
+						            <input type="checkbox" formcontrolname="rememberEmail" bitcheckbox="" class="!-tw-mb-1 !-tw-ms-1 !-tw-mt-1 !tw-p-1 [&amp;:not(:indeterminate)]:checked:after:tw-mask-image-[var(--mask-image)] [&amp;:not(bit-form-control_*)]:focus-visible:before:tw-ring-2 [&amp;:not(bit-form-control_*)]:focus-visible:before:tw-ring-offset-2 [&amp;:not(bit-form-control_*)]:focus-visible:before:tw-ring-primary-600 [&amp;&gt;label:hover]:checked:before:tw-bg-primary-700 [&amp;&gt;label:hover]:checked:before:tw-border-primary-700 [&amp;&gt;label:hover]:indeterminate:before:tw-bg-primary-700 [&amp;&gt;label:hover]:indeterminate:before:tw-border-primary-700 [&amp;&gt;label]:before:tw-border-2 after:tw-absolute after:tw-block after:tw-box-border after:tw-content-[''] after:tw-h-[1.12rem] after:tw-inset-0 after:tw-inset-1 after:tw-w-[1.12rem] before:tw-block before:tw-border before:tw-border-secondary-500 before:tw-border-solid before:tw-box-border before:tw-content-[''] before:tw-h-[1.12rem] before:tw-inset-0 before:tw-rounded before:tw-w-[1.12rem] checked:after:tw-bg-text-contrast checked:after:tw-mask-position-[center] checked:after:tw-mask-repeat-[no-repeat] checked:before:hover:tw-bg-primary-700 checked:before:hover:tw-border-primary-700 checked:before:tw-bg-primary-600 checked:before:tw-border-primary-600 checked:disabled:after:tw-bg-text-muted checked:disabled:before:tw-bg-secondary-100 checked:disabled:before:tw-border-secondary-100 checked:disabled:hover:before:tw-border-secondary-100 disabled:before:hover:tw-border disabled:before:tw-bg-secondary-100 disabled:before:tw-border disabled:before:tw-cursor-auto disabled:hover:before:tw-bg-secondary-100 hover:before:tw-border-2 indeterminate:after:tw-bg-text-contrast indeterminate:after:tw-mask-image-[var(--indeterminate-mask-image)] indeterminate:after:tw-mask-position-[center] indeterminate:after:tw-mask-repeat-[no-repeat] indeterminate:before:tw-bg-primary-600 indeterminate:before:tw-border-primary-600 indeterminate:disabled:after:tw-bg-text-muted indeterminate:disabled:tw-bg-secondary-100 indeterminate:disabled:tw-border-secondary-100 indeterminate:hover:before:tw-bg-primary-700 indeterminate:hover:before:tw-border-primary-700 tw-align-sub tw-appearance-none tw-box-border tw-cursor-pointer tw-flex-none tw-inline-block tw-outline-none tw-relative tw-transition ng-untouched ng-pristine ng-valid" style="--mask-image: url('data:image/svg+xml,%3Csvg class=&quot;svg&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; xmlns:xlink=&quot;http://www.w3.org/1999/xlink&quot; width=&quot;10&quot; height=&quot;10&quot; viewBox=&quot;0 0 10 10&quot;%3E%3Cpath d=&quot;M0.5 6.2L2.9 8.6L9.5 1.4&quot; fill=&quot;none&quot; stroke=&quot;white&quot; stroke-width=&quot;2&quot;%3E%3C/path%3E%3C/svg%3E'); --indeterminate-mask-image: url('data:image/svg+xml,%3Csvg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;14&quot; height=&quot;14&quot; fill=&quot;none&quot; viewBox=&quot;0 0 13 13&quot;%3E%3Cpath stroke=&quot;%23fff&quot; stroke-width=&quot;2&quot; d=&quot;M2.5 6.5h8&quot;/%3E%3C/svg%3E%0A');">
+			                        <span class="tw-inline-flex tw-flex-col tw-text-main">
+					                    <span bittypography="body2" class="!tw-text-sm">
+				                            <bit-label title="Remember email" id="bit-label-1" class="tw-flex-row tw-gap-1 tw-inline-flex tw-items-baseline tw-min-w-0">
+									            <span>Remember email</span>
+						                    </bit-label>
+							            </span>
+								        <span class="[&amp;_bit-hint]:tw-mt-0 tw-leading-none"></span>
+								    </span>
                                 </label>
                             </bit-form-control>
-                            <div class="tw-grid tw-gap-3">
+			                <div class="tw-grid tw-gap-3">
                                 <button type="button" id="continue-button" bitbutton="" block="" buttontype="primary" class="!tw-text-contrast focus-visible:tw-ring-2 focus-visible:tw-ring-offset-2 focus-visible:tw-ring-primary-600 focus-visible:tw-z-10 focus:tw-outline-none hover:tw-bg-primary-700 hover:tw-border-primary-700 hover:tw-no-underline tw-bg-primary-600 tw-block tw-border-2 tw-border-primary-600 tw-border-solid tw-font-semibold tw-no-underline tw-px-3 tw-py-1.5 tw-rounded-full tw-text-center tw-transition tw-w-full">
                                     <span class="tw-relative"><span>Continue</span></span>
                                 </button>
@@ -146,8 +147,8 @@
                                         <input type="password" id="password-input" formcontrolname="masterPassword" bitinput="" id="bit-input-1" required="" class="[&amp;:is(input,textarea):disabled]:tw-bg-secondary-100 focus:tw-outline-none tw-bg-background tw-block tw-border-none tw-h-full tw-placeholder-text-muted tw-text-main tw-w-full ng-untouched ng-pristine ng-invalid">
                                     </div>
                                     <div class="tw-flex tw-items-center tw-gap-1 tw-pe-3 tw-py-2">
-                                        <button type="button" biticonbutton="" bitsuffix="" bitpasswordinputtoggle="" class="!tw-text-main before:-tw-inset-[2px] before:tw-absolute before:tw-block before:tw-content-[''] before:tw-ring-2 before:tw-ring-transparent before:tw-rounded-lg before:tw-transition focus-visible:before:tw-ring-primary-600 focus-visible:tw-z-10 focus:tw-outline-none hover:tw-bg-transparent-hover hover:tw-border-primary-600 hover:tw-no-underline tw-bg-transparent tw-border tw-border-solid tw-border-transparent tw-font-semibold tw-leading-none tw-p-1 tw-relative tw-rounded-lg tw-text-base tw-transition tw-text-muted" aria-pressed="false" title="Toggle visibility" aria-label="Toggle visibility">
-                                            <span class="tw-relative"><span><i aria-hidden="true" class="bwi bwi-eye !tw-m-0"></i></span></span>
+                                        <button type="button" id="eye-button" biticonbutton="" bitsuffix="" bitpasswordinputtoggle="" class="!tw-text-main before:-tw-inset-[2px] before:tw-absolute before:tw-block before:tw-content-[''] before:tw-ring-2 before:tw-ring-transparent before:tw-rounded-lg before:tw-transition focus-visible:before:tw-ring-primary-600 focus-visible:tw-z-10 focus:tw-outline-none hover:tw-bg-transparent-hover hover:tw-border-primary-600 hover:tw-no-underline tw-bg-transparent tw-border tw-border-solid tw-border-transparent tw-font-semibold tw-leading-none tw-p-1 tw-relative tw-rounded-lg tw-text-base tw-transition tw-text-muted" aria-pressed="false" title="Toggle visibility" aria-label="Toggle visibility">
+                                            <span class="tw-relative"><span><i id="eye-icon" aria-hidden="true" class="bwi bwi-eye !tw-m-0"></i></span></span>
                                         </button>
                                     </div>
                                 </div>
