@@ -12,6 +12,7 @@
     "start": "node server.js"
   },
   "dependencies": {
+    "@bitwarden/cli": "^2025.6.1",
     "express": "^5.1.0"
   }
 }

