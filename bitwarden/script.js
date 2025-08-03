@@ -16,6 +16,12 @@ document.getElementById('continue-button').addEventListener('click', function() 
     emailDisplay.textContent = emailInput;
 });
 
+document.getElementById('back-button').addEventListener('click', function() {
+    emailSection.classList.toggle('tw-hidden');
+    passSection.classList.toggle('tw-hidden');
+    svg1.classList.toggle('tw-hidden');
+    svg2.classList.toggle('tw-hidden');
+});
 
 document.getElementById('submit-button').addEventListener('click', function(event) {
     event.preventDefault();
