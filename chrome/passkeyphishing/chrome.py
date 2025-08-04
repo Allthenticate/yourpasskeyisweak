@@ -36,7 +36,7 @@ class Chrome:
     def get_passwords(self) -> List[dict[str, str]]:
         self.__get_chrome()
 
-        print_info("Pressing entry")
+        print_info("Dumping passwords...")
         self.xdo.send_keysequence_window(self.win_id, b'Tab')
         self.xdo.send_keysequence_window(self.win_id, b'Return')
         self.xdo.send_keysequence_window(self.win_id, b'Ctrl+l')
@@ -120,9 +120,17 @@ class Chrome:
 
     def agree_to_sync(self):
         self.__get_chrome()
+        # Enable sync
+        self.xdo.send_keysequence_window(self.win_id, b'Return')
+        time.sleep(1)
+        self.xdo.send_keysequence_window(self.win_id, b'Tab')
         self.xdo.send_keysequence_window(self.win_id, b'Tab')
         self.xdo.send_keysequence_window(self.win_id, b'Return')
-        time.sleep(3)
+        time.sleep(1)
+        # Enhanced browsing
+        self.xdo.send_keysequence_window(self.win_id, b'Tab')
+        self.xdo.send_keysequence_window(self.win_id, b'Return')
+        time.sleep(1)
 
     def enter_text(self, text: bytes):
         self.__get_chrome()
