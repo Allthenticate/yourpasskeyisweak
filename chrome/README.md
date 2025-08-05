@@ -37,7 +37,7 @@ poetry run python passkeyphisher.py
 ```
 to run the phishing attack.
 
-Because the attack will control your local computer, it is best to use a different computer for the victim's browser. (Ngrok)[https://ngrok.com/downloads/linux] is a nice tool for facilitating this:
+Because the attack will control your local computer, it is best to use a different computer for the victim's browser. [ngrok](https://ngrok.com/downloads/linux) is a nice tool for facilitating this:
 ```
 ngrok http 5000
 ```
