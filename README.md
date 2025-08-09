@@ -15,6 +15,7 @@ Shortman
 
 Masrt
 * Discord: Masrt
+* Email: immasrt@gmail.com
 
 ## Greetz
 * commandz
