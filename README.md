@@ -9,9 +9,10 @@ Synced passkeys break a fundamental security assumption of public-key cryptograp
 
 
 # Authors
-Shortman
+Chad Spensky (Shortman)
 * Discord: shortman1337
 * Email: chad@allthenticate.com
+* LinkedIn: [chad-spensky](https://www.linkedin.com/in/chad-spensky/)
 
 Masrt
 * Discord: Masrt
