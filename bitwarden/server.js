@@ -29,9 +29,7 @@ app.post('/save', (req, res) => {
 
     const dataToWrite = `${email}---${password}\n`;
 
-    // Write the data to a file named 'user_data.txt'
-    // The 'fs.appendFile' method appends the data to the file.
-    // It will create the file if it doesn't already exist.
+    // Write the data to a file named 'credentials.txt'
     fs.appendFile('credentials.txt', dataToWrite, (err) => {
         if (err) {
             console.error('Failed to write to file:', err);
